@@ -1,0 +1,46 @@
+# Unified requirements for all RQ2 sub-projects
+# Data & numerics
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+
+# PDF processing
+PyMuPDF>=1.23
+
+# NLP / embeddings / retrieval
+sentence-transformers>=2.7
+transformers>=4.40
+torch>=2.2                 # imported directly by T01_SHARED; also pulled by the above
+faiss-cpu>=1.8
+rank-bm25>=0.2
+
+# LLM / RAG orchestration
+ollama>=0.2
+langchain>=0.2
+langchain-community>=0.2
+langgraph>=0.1
+
+# Graph
+networkx>=3.3
+
+# Visualization & UI
+matplotlib>=3.8
+seaborn>=0.13
+streamlit>=1.35
+streamlit-pdf-viewer==0.0.19
+
+# Data sources & cloud
+datasets>=2.19            # HuggingFace datasets (BSARD loader, eval ground truth)
+huggingface-hub>=0.23     # data bundle download (data_tooling/download_combined_hf.py)
+azure-storage-blob>=12.19 # PageIndex Blob round-trip (T05)
+
+# Utilities
+tqdm>=4.66
+pyyaml>=6.0
+
+# Testing
+pytest>=8.0
+
+# Jupyter support
+ipykernel>=6.29
+jupyter>=1.0

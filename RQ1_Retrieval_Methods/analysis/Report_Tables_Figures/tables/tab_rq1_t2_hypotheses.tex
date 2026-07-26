@@ -1,0 +1,14 @@
+\begin{tabularx}{\linewidth}{@{}l X l X@{}}
+\toprule
+H\# & {Claim} & {Verdict} & {Evidence} \\
+\midrule
+H1 & Only fine-tuned dense models will close the semantic-paraphrase gap; zero-shot dense will be near-random. & \textit{Refuted} & Zero-shot mE5-large, BGE-M3, and Qwen3-instruct each roughly double the best sparse R@10 on the paraphrase stratum (0.14 vs 0.07). Zero-shot CamemBERT-base does collapse (R@100 = 1.69\%) -- that half holds. \\
+H2 & French-specific \texttt{sentence-camembert-large} may underperform multilingual mE5-large despite domain specificity. & \textbf{Confirmed} & mE5-large R@100 = 0.594 $>$ CamemBERT-lg R@100 = 0.583. Multilingual retrieval pretraining wins over French-only LM pretraining. \\
+H3 & mE5-large may not consistently outperform mE5-base on statutory text. & \textit{Refuted} & mE5-large R@100 = 0.594 vs mE5-base R@100 = 0.491 -- a $\sim$10 pp gap. Scale matters here. \\
+H4 & Paper checkpoint (if released) would significantly outperform all zero-shot models. & \textit{Not tested} & Authors' fine-tuned checkpoint (EXP-D5) was never released. \\
+H5 & Dense will outperform BM25 on semantically paraphrased queries while underperforming on lexically aligned queries. & Mixed & Paraphrased: dense $>$ sparse confirmed. Lexically aligned: dense \emph{also} wins (Qwen3-instruct R@10 = 0.590 vs best sparse $\sim$0.52) -- the second half is refuted. \\
+H6 & BGE-M3 will outperform mE5 on long articles due to its 1024-token window; comparable on short articles. & Mixed & Overall: BGE-M3 R@100 = 0.592 essentially tied with mE5-large 0.594 despite less truncation. BGE-M3 \emph{does} lead on R@500 -- the long-context advantage shows up only in deeper recall. \\
+H7 & \texttt{concat\_2x} field weighting will give a modest ($\sim$0.5--1 pp) R@100 improvement on the winning encoder. & \textbf{Confirmed} & mE5-large concat-2x R@100 = 0.622 vs text-only 0.594 ($+$2.7 pp, larger than predicted; $p = 0.0003$ vs sparse anchor). \\
+H8 & Qwen3-0.6B (decoder-only, last-token pooling) will outperform same-scale encoder-only bi-encoders; D10i $>$ D10. & \textbf{Confirmed} & Qwen3-plain R@100 = 0.582, Qwen3-instruct R@100 = 0.597 -- both above mE5-base (0.491) at similar scale. Instruct $>$ plain ($+$1.5 pp). \\
+\bottomrule
+\end{tabularx}

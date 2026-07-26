@@ -1,0 +1,5 @@
+# Lock line endings for inputs that feed cache fingerprints. Without this,
+# core.autocrlf=true on Windows would silently rewrite LF↔CRLF on checkout
+# and shift the file's sha256, invalidating T04's azuredi_dump_fingerprint
+# across machines.
+data/csv/pdf_document_map.csv text eol=lf

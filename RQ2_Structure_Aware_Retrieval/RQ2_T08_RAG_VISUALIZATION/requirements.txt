@@ -1,0 +1,24 @@
+# Streamlit app
+streamlit>=1.35
+streamlit-pdf-viewer==0.0.19   # pinned — do not float (see PROJECT_CONTEXT.md §10)
+
+# PDF coordinate mapping (word-index build)
+PyMuPDF>=1.23
+
+# Data handling
+pandas>=2.0
+pyyaml>=6.0
+
+# Retrieval demo (chunk/article BM25 + tokenizer over the PDF layout)
+rank-bm25>=0.2
+transformers>=4.40
+
+# Testing
+pytest>=8.0
+
+# Sibling packages — install with:
+# pip install -e ../RQ2_T01_SHARED
+# pip install -e ../RQ2_T02_DATA_LOADER
+# pip install -e ../RQ2_T03_ARM1_NAIVE
+# pip install -e ../RQ2_T04_ARM2_METADATA
+# pip install -e ../RQ2_T05_ARM2_PAGEINDEX

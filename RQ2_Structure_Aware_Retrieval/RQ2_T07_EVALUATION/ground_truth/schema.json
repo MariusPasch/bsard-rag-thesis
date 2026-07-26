@@ -1,0 +1,8 @@
+{
+  "_comment": "Ground-truth format: query_id (str) -> list of relevant bsard_ids (int). One file per BSARD split. Source: maastrichtlawtech/bsard `questions` HuggingFace dataset, `article_ids` column (which holds bsard_ids despite the name).",
+  "_files": ["bsard_train.json", "bsard_test.json"],
+  "_example": {
+    "1102": [22225, 22226, 22227, 22228, 22229, 22230, 22231, 22232, 22233, 22234],
+    "42": [9876]
+  }
+}

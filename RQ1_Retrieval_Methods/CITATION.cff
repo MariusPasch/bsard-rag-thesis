@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+title: >-
+  BSARD Retrieval (RQ1): Sparse, Dense, Hybrid and Agentic
+  Retrieval over Belgian Statutory Law
+message: >-
+  If you use this software, please cite it using these
+  metadata. Please also cite the underlying BSARD dataset
+  (see DATA_LICENSE.md).
+type: software
+authors:
+  - given-names: Marios
+    family-names: Paschalidis
+    email: paschalidismarios@gmail.com
+    affiliation: KU Leuven
+repository-code: "https://github.com/MariusPasch/bsard-rag-thesis"
+abstract: >-
+  Code and experiments for a systematic comparison of
+  retrieval methods (sparse BM25, dense bi-encoders, hybrid
+  fusion, and agentic LLM-judge / CRAG / ReAct pipelines)
+  over the Belgian Statutory Article Retrieval Dataset
+  (BSARD), conducted as part of a master's thesis at
+  KU Leuven.
+keywords:
+  - information retrieval
+  - legal NLP
+  - retrieval-augmented generation
+  - BSARD
+  - dense retrieval
+  - reranking
+license: MIT
+version: "1.0.0"
+date-released: "2026-06-16"
+references:
+  - type: article
+    title: A Statutory Article Retrieval Dataset in French
+    authors:
+      - given-names: Antoine
+        family-names: Louis
+      - given-names: Gerasimos
+        family-names: Spanakis
+    year: 2022
+    collection-title: >-
+      Proceedings of the 60th Annual Meeting of the
+      Association for Computational Linguistics

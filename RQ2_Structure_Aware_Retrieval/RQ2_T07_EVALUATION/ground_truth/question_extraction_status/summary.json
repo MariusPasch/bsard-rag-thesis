@@ -1,0 +1,40 @@
+{
+  "unit_of_analysis": "bsard_id (unique BSARD article id, matching `id` field in maastrichtlawtech/bsard corpus split)",
+  "total_questions": 1108,
+  "buckets": [
+    {
+      "name": "exact",
+      "count": 491,
+      "pct": 44.31
+    },
+    {
+      "name": "partial",
+      "count": 213,
+      "pct": 19.22
+    },
+    {
+      "name": "not_present",
+      "count": 14,
+      "pct": 1.26
+    },
+    {
+      "name": "mixed",
+      "count": 390,
+      "pct": 35.2
+    }
+  ],
+  "by_split": {
+    "train": {
+      "exact": 385,
+      "mixed": 324,
+      "partial": 167,
+      "not_present": 10
+    },
+    "test": {
+      "exact": 106,
+      "mixed": 66,
+      "partial": 46,
+      "not_present": 4
+    }
+  }
+}

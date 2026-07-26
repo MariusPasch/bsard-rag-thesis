@@ -1,0 +1,11 @@
+# Top-level dependencies for the mono-repo data tooling in data_tooling/
+# (upload_combined_hf.py / download_combined_hf.py). These are the only
+# packages needed to pull or publish the combined Hugging Face dataset — the
+# documented first step for every component. Each component keeps its own
+# requirements.txt for its experiment code; there is no shared environment.
+#
+#   pip install -r requirements.txt
+#   python data_tooling/download_combined_hf.py --subset all
+
+huggingface_hub          # snapshot_download / HfApi — pull & push the dataset
+requests                 # upload_combined_hf.py — hardened HTTP timeout handling

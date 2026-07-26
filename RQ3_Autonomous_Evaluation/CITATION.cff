@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+title: >-
+  BSARD Evaluation (RQ3): A Reusable Multi-Tier Retrieval
+  and Autonomous Evaluation Harness for Belgian Statutory Law
+message: >-
+  If you use this software, please cite it using these
+  metadata. Please also cite the underlying BSARD dataset
+  (see DATA_LICENSE.md).
+type: software
+authors:
+  - given-names: Marios
+    family-names: Paschalidis
+    email: paschalidismarios@gmail.com
+    affiliation: KU Leuven
+repository-code: "https://github.com/MariusPasch/bsard-rag-thesis"
+abstract: >-
+  A reusable evaluation harness for retrieval-augmented
+  generation over the Belgian Statutory Article Retrieval
+  Dataset (BSARD). It implements a four-tier metric stack —
+  efficiency, BSARD paper replication, full supervised IR
+  metrics, and autonomous (reference-free) LLM-based metrics
+  (UMBRELA, eRAG, ARES, RAGAS) — and underpins the RQ3
+  investigation of whether autonomous metrics can replace
+  supervised retrieval evaluation, conducted as part of a
+  master's thesis at KU Leuven.
+keywords:
+  - information retrieval
+  - legal NLP
+  - retrieval-augmented generation
+  - autonomous evaluation
+  - LLM-as-a-judge
+  - BSARD
+license: MIT
+version: "0.1.0"
+date-released: "2026-06-17"
+references:
+  - type: article
+    title: A Statutory Article Retrieval Dataset in French
+    authors:
+      - given-names: Antoine
+        family-names: Louis
+      - given-names: Gerasimos
+        family-names: Spanakis
+    year: 2022
+    collection-title: >-
+      Proceedings of the 60th Annual Meeting of the
+      Association for Computational Linguistics

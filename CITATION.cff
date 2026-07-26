@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+title: >-
+  BSARD RAG Thesis: Corpus Construction and Retrieval-Augmented
+  Generation over Belgian Statutory Law
+message: >-
+  If you use this software, please cite it using these
+  metadata. Please also cite the underlying BSARD dataset
+  (see DATA_LICENSE.md).
+type: software
+authors:
+  - given-names: Marios
+    family-names: Paschalidis
+    email: paschalidismarios@gmail.com
+    affiliation: KU Leuven
+repository-code: "https://github.com/MariusPasch/bsard-rag-thesis"
+abstract: >-
+  A mono-repo for a master's thesis at KU Leuven on
+  retrieval-augmented generation over Belgian statutory law.
+  It builds a SQLite corpus database linking 49 Justel
+  consolidated Belgian law PDFs to the Belgian Statutory
+  Article Retrieval Dataset (BSARD), then evaluates retrieval
+  and RAG methods across three research questions: sparse,
+  dense, hybrid and agentic retrieval (RQ1); naive,
+  metadata-aware and PageIndex retrieval arms (RQ2); and a
+  reusable multi-tier retrieval and autonomous evaluation
+  harness (RQ3).
+keywords:
+  - information retrieval
+  - legal NLP
+  - retrieval-augmented generation
+  - BSARD
+  - dense retrieval
+  - corpus construction
+  - Belgian law
+license: MIT
+version: "1.0.0"
+date-released: "2026-06-24"
+references:
+  - type: article
+    title: A Statutory Article Retrieval Dataset in French
+    authors:
+      - given-names: Antoine
+        family-names: Louis
+      - given-names: Gerasimos
+        family-names: Spanakis
+    year: 2022
+    collection-title: >-
+      Proceedings of the 60th Annual Meeting of the
+      Association for Computational Linguistics

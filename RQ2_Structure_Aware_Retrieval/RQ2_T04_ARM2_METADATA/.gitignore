@@ -1,0 +1,46 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data & outputs (large files — store separately)
+data/
+outputs/
+results/
+*.pkl
+*.npy
+*.faiss
+*.index
+
+# AzureDI — large VDB dumps and backups are not stored in git
+azuredi/VectorDB_Documents.json
+azuredi/VectorDBdev_Documents.json
+azuredi/VectorDB*.json
+azuredi/backups/
+
+# Jupyter
+.ipynb_checkpoints/
+# Notebooks are tracked; see .gitattributes for the last-write-wins merge policy.
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / config overrides
+.env
+config.local.yaml

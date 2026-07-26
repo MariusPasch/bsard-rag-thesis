@@ -1,0 +1,15 @@
+# Core
+pandas>=2.0
+numpy>=1.26
+
+# Statistics & visualisation
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+
+# Tokenizer (token-aware result tables / weighted metrics)
+transformers>=4.40
+
+# Sibling packages — install with: pip install -e ../RQ2_T01_SHARED
+# pip install -e ../RQ2_T02_DATA_LOADER
+# pip install -e ../RQ2_T07_EVALUATION

@@ -1,0 +1,19 @@
+# Core
+numpy>=1.26
+pandas>=2.0
+tqdm>=4.66
+
+# Embeddings / retrieval (enriched article embeddings)
+sentence-transformers>=2.7
+transformers>=4.40
+torch>=2.2
+
+# LLM backend (Ollama must be running separately)
+ollama>=0.2
+
+# Data bundle & cloud
+huggingface-hub>=0.23     # data download
+azure-storage-blob>=12.19 # Blob round-trip for cached artefacts
+
+# Sibling packages — install with: pip install -e ../RQ2_T01_SHARED
+# pip install -e ../RQ2_T02_DATA_LOADER

@@ -1,0 +1,15 @@
+# Core
+numpy>=1.26
+tqdm>=4.66
+
+# Embeddings
+sentence-transformers>=2.7
+transformers>=4.40
+torch>=2.2                # imported directly (device checks / tensor ops)
+
+# Vector & lexical stores
+faiss-cpu>=1.8
+rank-bm25>=0.2
+
+# LLM backend (Ollama must be running separately)
+ollama>=0.2

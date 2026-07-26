@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-03-27",
+  "split": "train",
+  "seed": 42,
+  "first_stage": "hybrid_rrf_k60",
+  "max_article_tokens": 1000,
+  "examples": [
+    {
+      "role": "relevant",
+      "question": "Nous sommes séparés mais pas divorcés. Mon conjoint va-t-il hériter de mes biens à mon décès ?",
+      "article_text_truncated": "§ 1. Nonobstant toute disposition contraire, le conjoint survivant a droit à l'usufruit de la moitié de la masse visée à l'article 922.§ 2. Les libéralités par acte entre vifs ou par testament ne peuvent avoir pour effet de priver le conjoint survivant de l'usufruit ou du droit au bailde l'immeuble affecté au jour de l'ouverture de la succession au logement principal de la famille et des meubles meublants qui le garnissent.En cas de séparation de fait des époux, cet usufruit ou ce droit au bailporte sur l'immeuble où les époux avaient établi leur dernière résidence conjugale et sur les meubles meublants qui le garnissent, a condition que le conjoint survivant y ait maintenu sa résidence ou ait été contre sa volonté empêché de le faire et que l'attribution de cet usufruit ou de ce droit au bailsoit conforme à l'équité.Cet usufruit est imputé sur celui que le conjoint survivant obtient en vertu du § 1er, sans toutefois y être limité.§ 2/1. En toute hypothèse, le conjoint survivant ne peut solliciter la réduction des donations consenties par le défunt à une époque où le conjoint n'avait pas cette qualité, nonobstant la comptabilisation de celles-ci dans la masse visée à l'article 922. Il ne peut pas non plus profiter de la réduction de telles donations demandée par les descendants du défunt.§ 3. Le conjoint survivant peut être privé par testament des droits visés aux paragraphes 1er et 2 lorsqu'au jour du décès les époux étaient séparés depuis plus de six mois et que, par un acte judiciaire, soit en demandant soit en défendant, le défunt ou le conjoint survivant a soit réclamé une résidence séparée de celle de son conjoint, soit introduit une demande de divorce sur la base de l'article 229, et pour autant que depuis cet acte les époux n'aient plus repris la vie commune.Dans le cas visé à l'alinéa 1er, la désignation d'un légataire universel constitue une présomption réfragable de la volonté de priver le conjoint survivant de ces droits.Les alinéas 1er et 2 ne sont pas applicables lorsque les époux ont établi la convention prévue à l'article 1287, alinéa 3, du Code judiciaire. Cette convention produit ses effets à partir du dépôt de la requête en divorce, sauf si les parties ont décidé dans la convention qu'elle produit ses effets au jour de la signature.§ 4. 2§ 5. Il peut être dérogé aux dispositions du présent article dans le cas visé à l'article 1388, alinéa 2.",
+      "article_id": 1383,
+      "strata": "single_article",
+      "binary_label": "Oui",
+      "numeric_score": 9
+    },
+    {
+      "role": "irrelevant",
+      "question": "Dois-je prendre un avocat pour contester la décision d’un organisme de sécurité sociale ?",
+      "article_text_truncated": "§ 1er. Selon les modalités définies par le Gouvernement, l'organisme assureur wallon notifie au demandeur la décision d'octroi par courrier simple et par envoi recommandé la décision de révision ou de refus de l'allocation.La décision d'octroi, de révision ou de refus de l'allocation contient, à peine de nullité, les mentions suivantes :1° la possibilité d'intenter un recours devant le tribunal du travail compétent;2° l'adresse du tribunal compétent;3° le délai et les modalités pour intenter un recours;4° le contenu des articles 728 et 1017 du Code Judiciaire;5° les références du dossier et du service qui gère celui-ci;6° la possibilité d'obtenir toute explication sur la décision auprès du service qui gère le dossier ou d'un service d'information désigné;7° le détail des données relatives aux revenus prises en considération, ainsi que l'identification du service ou l'institution ayant fourni ces données.Si la décision ne contient pas les mentions prévues à l'alinéa 1er le délai de recours ne commence pas à courir.§ 2. Lorsqu'il est constaté que la décision est entachée d'une erreur de droit ou matérielle, l'organisme assureur wallon prend d'initiative une nouvelle décision produisant ses effets à la date à laquelle la décision rectifiée aurait dû prendre effet et ce, sans préjudice des dispositions légales et réglementaires en matière de prescription.La nouvelle décision produit ses effets, en cas d'erreur due au service administratif ou à l'organisme assureur wallon, le premier jour du mois qui suit la notification, si le droit au paiement de l'allocation est inférieur à celui reconnu initialement.Les paiements indus résultant d'une erreur imputable à l'organisme assureur wallon sont à charge de ce dernier.",
+      "article_id": 18490,
+      "strata": "multi_article",
+      "binary_label": "Non",
+      "numeric_score": 1
+    }
+  ]
+}

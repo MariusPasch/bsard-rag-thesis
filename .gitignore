@@ -1,0 +1,68 @@
+# Top-level mono-repo ignores. Each component also has its own .gitignore;
+# this file covers the common cases repo-wide.
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data roots / large artefacts — downloaded from Hugging Face, never in git.
+# (Component scripts default these to a local, gitignored data root.)
+output/
+data_storage/
+dataset_creation_output/
+*.db
+*.db-wal
+*.db-shm
+*.parquet
+*.jsonl
+*.npy
+*.faiss
+*.index
+*.pkl
+*.bm25
+*.zip
+
+# Model weights
+models/
+*.bin
+*.safetensors
+*.gguf
+
+# Environment variables / secrets
+.env
+.env.local
+.streamlit/secrets.toml
+
+# Experiment tracking & logs
+wandb/
+mlruns/
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+
+# AI assistant / local agent settings
+.claude/
+
+# Report & presentation artefacts — built locally, not tracked
+docs/

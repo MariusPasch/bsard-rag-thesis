@@ -1,0 +1,56 @@
+# ─── Core data ────────────────────────────────────────────────────────────────
+pandas
+pyarrow
+numpy
+datasets                 # HuggingFace datasets — BSARD corpus loader
+
+# ─── Sparse retrieval ─────────────────────────────────────────────────────────
+scikit-learn
+rank-bm25
+nltk                     # Snowball French stemmer (Tier 1 stem ablation)
+spacy                    # French lemmatisation — also run: python -m spacy download fr_core_news_lg
+
+# ─── Dense retrieval ──────────────────────────────────────────────────────────
+sentence-transformers
+transformers
+torch                    # CPU build by default; swap for torch+cu121 on GPU
+faiss-cpu                # swap for faiss-gpu if CUDA available
+
+# ─── Vector stores (choose one or both) ──────────────────────────────────────
+chromadb
+# lancedb                # alternative to chromadb
+
+# ─── Agentic RAG ──────────────────────────────────────────────────────────────
+langchain
+langchain-community
+langchain-openai          # for GPT-4o API fallback
+langgraph
+
+# ─── LLM backends ─────────────────────────────────────────────────────────────
+openai                    # GPT-4o API (agentic judge / HyDE)
+# ollama                  # local LLaMA / Mistral via Ollama (install separately)
+
+# ─── Evaluation & analysis ────────────────────────────────────────────────────
+# bsard_evaluation: install separately as an editable local package —
+#   pip install -e "../RQ3_Autonomous_Evaluation"
+# See scripts/setup/setup_new_device.ps1 for automation.
+scipy
+matplotlib
+seaborn
+ragas                    # Tier 4 agentic RAG answer-quality metrics
+
+# ─── Notebooks ────────────────────────────────────────────────────────────────
+jupyter
+ipykernel
+
+# ─── Cloud / Azure (GPU notebooks stage artefacts to Blob storage) ────────────
+azure-storage-blob       # azure_notebooks — read/write run artefacts
+
+# ─── Testing ──────────────────────────────────────────────────────────────────
+pytest
+
+# ─── Utilities ────────────────────────────────────────────────────────────────
+tqdm
+requests                 # HTTP downloads (Azure SAS staging, data fetch)
+python-dotenv
+huggingface_hub          # scripts/download_data.py — fetch the data bundle

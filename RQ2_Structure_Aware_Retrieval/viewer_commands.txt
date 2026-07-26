@@ -1,0 +1,87 @@
+*ARM1 viewer launch commands — one block per selected PDF*
+*All bundles built with: sliding_window 512/256, e5-large-instruct, recall_ceiling=1.0*
+*Suggested qid per PDF = the question with the most GT articles fully landing in that PDF*
+
+
+Common setup (do once per terminal session):
+
+cd "<repo>\RQ2_Structure_Aware_Retrieval\RQ2_T08_RAG_VISUALIZATION"
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.\.venv\Scripts\Activate.ps1
+
+
+────────────────────────────────────────────────────────────────────────────────
+1) 1804_03_21_1804032150  (Code Civil, 129 pages, 265 questions)  —  qid=192
+   GT: 3 articles (Art. 32 / 146bis / 193ter)
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\1804_03_21_1804032150\t08_bundles\483beb56a47b\q192.json" `
+  --db="$RQ2_DATA_DIR/bsard_corpus.db" `
+  --mode=retrieval --arm=arm1
+
+
+────────────────────────────────────────────────────────────────────────────────
+[REMOVED 2026-05-06] 1804_03_21_1804032153 — dropped from the curated set: only
+11/347 BSARD-linked articles are IN_PDF (others are <Abrogé par L 2022-04-28>
+stubs). See RQ2_T00_ORCHESTRATOR/data/selected_pdfs.json (removed_pdfs).
+Worked-example bundles still exist at
+data/1804_03_21_1804032153/t08_bundles/483beb56a47b/ if you want to inspect:
+  q70.json   (39 GT, all ABROGATED — viewer shows zero recoverable GT)
+  q188.json  (cohabitation légale, 3/3 GT IN_PDF — recall@10 = 100%)
+
+
+────────────────────────────────────────────────────────────────────────────────
+3) 1867_06_08_1867060850  (138 pages, 106 questions)  —  qid=729
+   GT: 16 articles (all in this PDF)
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\1867_06_08_1867060850\t08_bundles\483beb56a47b\q729.json" `
+  --db="$RQ2_DATA_DIR/bsard_corpus.db" `
+  --mode=retrieval --arm=arm1
+
+
+────────────────────────────────────────────────────────────────────────────────
+4) 1967_10_10_1967101055  (173 pages, 219 questions)  —  qid=583
+   GT: 14 articles (all in this PDF)
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\1967_10_10_1967101055\t08_bundles\483beb56a47b\q583.json" `
+  --db="$RQ2_DATA_DIR/bsard_corpus.db" `
+  --mode=retrieval --arm=arm1
+
+
+────────────────────────────────────────────────────────────────────────────────
+5) 1967_10_10_1967101056  (79 pages, 87 questions)  —  qid=89
+   GT: 5 articles (all in this PDF)
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\1967_10_10_1967101056\t08_bundles\483beb56a47b\q89.json" `
+  --db="$RQ2_DATA_DIR/bsard_corpus.db" `
+  --mode=retrieval --arm=arm1
+
+
+────────────────────────────────────────────────────────────────────────────────
+6) 2003_07_17_2013A31614  (99 pages, 136 questions)  —  qid=973
+   GT: 6 articles (all in this PDF)
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\2003_07_17_2013A31614\t08_bundles\483beb56a47b\q973.json" `
+  --db="$RQ2_DATA_DIR/bsard_corpus.db" `
+  --mode=retrieval --arm=arm1
+
+
+────────────────────────────────────────────────────────────────────────────────
+Notes
+─────
+- qset_hash 483beb56a47b = bsard_train (886 questions). For bsard_test bundles,
+  swap that segment for 50744bfce1d0 in the path.
+- Each PDF has many more eligible questions cached on disk under the same
+  t08_bundles\<qset_hash>\ folder — list the directory to see all q<qid>.json
+  files and pick a different one if you want.
+- The bundle is fully self-contained (raw_text + article_spans + top-200 pool
+  baked in). --db is only consulted to render article-text in the GT panel /
+  expanders; retrieval itself runs offline.
+- All bundles use the canonical ARM1 config:
+    sliding_window window_size=512 stride=256, intfloat/multilingual-e5-large-instruct
+- 2004_05_27_2004A27101 is intentionally excluded — known BSARD GT drift on
+  that PDF. Recall floors near 0 regardless of retriever quality.

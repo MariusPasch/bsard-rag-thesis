@@ -1,0 +1,11 @@
+\begin{tabular}{l S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] r}
+\toprule
+Arm & {E/R@10} & {R@10} & {Hit@10} & {E/R@100} & {R@100} & {MRR@10} & {nDCG@10} & {$p$ vs Arm 1} \\
+\midrule
+Arm 1 (Naive, RRF over chunks) & {\textbf{0.483}} & 0.472 & 0.629 & {\textbf{0.869}} & {\textbf{0.858}} & 0.348 & 0.348 & -- \\
+Arm 2A: summary-node (canonical) & 0.472 & {\textbf{0.482}} & {\textbf{0.691}} & 0.763 & 0.807 & {\textbf{0.460}} & {\textbf{0.398}} & 0.423 \\
+Arm 2C (CNR) & 0.379 & 0.379 & 0.556 & 0.589 & 0.589 & 0.371 & 0.321 & -- \\
+Arm 2C (simple nav) & 0.263 & 0.263 & 0.383 & 0.463 & 0.463 & 0.241 & 0.220 & -- \\
+Arm 2B (PageIndex, LLM nav) & 0.175 & {0.185$\dagger$} & 0.265 & 0.363 & 0.404 & 0.184 & 0.156 & $<0.001$ \\
+\bottomrule
+\end{tabular}

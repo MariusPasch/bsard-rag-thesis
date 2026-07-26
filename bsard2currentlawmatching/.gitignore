@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+
+# Pipeline outputs (distributed via the Hugging Face dataset, see README)
+output/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# AI assistant / local agent settings
+.claude/

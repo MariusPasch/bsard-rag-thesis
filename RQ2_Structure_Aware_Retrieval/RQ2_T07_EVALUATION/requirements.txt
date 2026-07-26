@@ -1,0 +1,24 @@
+# RQ3 canonical evaluation service — install once per machine:
+#   pip install -e "..\..\RQ3_Autonomous_Evaluation"
+# (provides bsard_evaluation with Tier 0/1/2 metrics)
+
+# Data handling
+pandas>=2.0
+datasets>=2.19           # BSARD ground-truth / corpus loading
+
+# Statistics & visualisation
+numpy>=1.24
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+
+# Tokenizer (weight precomputer for Arm 1 weighted metrics)
+transformers>=4.40
+
+# Eval frameworks (Tier 3 / autonomous eval — optional until needed)
+# ragas>=0.1
+# deepeval>=0.21
+
+# Sibling packages — install with:
+#   pip install -e ../RQ2_T01_SHARED
+#   pip install -e ../RQ2_T02_DATA_LOADER

@@ -1,0 +1,33 @@
+# ═══════════════════════════════════════════════════════════════════════
+# Core dependencies (Tiers 1 & 2) — always required
+# ═══════════════════════════════════════════════════════════════════════
+numpy>=1.24
+scipy>=1.10             # ttest_rel, wilcoxon
+pandas>=2.0             # result table generation, analysis
+
+# ═══════════════════════════════════════════════════════════════════════
+# Visualisation — for analysis notebooks and reports
+# ═══════════════════════════════════════════════════════════════════════
+matplotlib>=3.7
+seaborn>=0.12
+
+# ═══════════════════════════════════════════════════════════════════════
+# Jupyter — for analysis notebooks
+# ═══════════════════════════════════════════════════════════════════════
+jupyter>=1.0
+ipykernel>=6.0
+
+# ═══════════════════════════════════════════════════════════════════════
+# Tier 3 — Autonomous LLM-based metrics (optional, install as needed)
+# ═══════════════════════════════════════════════════════════════════════
+# ragas>=0.1              # RAGAS framework
+# ragchecker>=0.1         # RAGChecker NLI claim decomposition
+# deepeval>=0.20          # G-Eval / LLM-as-a-Judge
+# ares-ai>=0.1            # ARES fine-tuned LM judges
+# datasets>=2.14          # HuggingFace datasets (for RAGAS)
+# openai>=1.0             # OpenAI API (for RAGAS / G-Eval via API)
+
+# ═══════════════════════════════════════════════════════════════════════
+# Testing
+# ═══════════════════════════════════════════════════════════════════════
+pytest>=7.0

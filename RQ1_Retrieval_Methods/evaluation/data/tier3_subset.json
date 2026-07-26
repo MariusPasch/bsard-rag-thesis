@@ -1,0 +1,988 @@
+{
+  "meta": {
+    "created": "2026-04-05",
+    "seed": 42,
+    "target_n": 50,
+    "actual_n": 48,
+    "total_test_n": 222,
+    "pct_of_test": 21.62,
+    "strategy": "proportional_stratified",
+    "axes": [
+      "article_count",
+      "lex_align",
+      "cross_ref"
+    ],
+    "note": "Fixed subset for all Tier 3 evaluations across RQ1/RQ2/RQ3. Do not resample — use this file as the canonical T3 question set."
+  },
+  "cell_summary": {
+    "('multi_article', 'lexically_aligned', 'with_cross_refs')": {
+      "pool": 32,
+      "sampled": 7
+    },
+    "('multi_article', 'lexically_aligned', 'without_cross_refs')": {
+      "pool": 2,
+      "sampled": 1
+    },
+    "('multi_article', 'middle', 'with_cross_refs')": {
+      "pool": 69,
+      "sampled": 15
+    },
+    "('multi_article', 'middle', 'without_cross_refs')": {
+      "pool": 4,
+      "sampled": 1
+    },
+    "('multi_article', 'semantically_paraphrased', 'with_cross_refs')": {
+      "pool": 23,
+      "sampled": 5
+    },
+    "('multi_article', 'semantically_paraphrased', 'without_cross_refs')": {
+      "pool": 9,
+      "sampled": 2
+    },
+    "('single_article', 'lexically_aligned', 'with_cross_refs')": {
+      "pool": 33,
+      "sampled": 7
+    },
+    "('single_article', 'lexically_aligned', 'without_cross_refs')": {
+      "pool": 4,
+      "sampled": 1
+    },
+    "('single_article', 'middle', 'with_cross_refs')": {
+      "pool": 16,
+      "sampled": 3
+    },
+    "('single_article', 'middle', 'without_cross_refs')": {
+      "pool": 10,
+      "sampled": 2
+    },
+    "('single_article', 'semantically_paraphrased', 'with_cross_refs')": {
+      "pool": 9,
+      "sampled": 2
+    },
+    "('single_article', 'semantically_paraphrased', 'without_cross_refs')": {
+      "pool": 11,
+      "sampled": 2
+    }
+  },
+  "questions": [
+    {
+      "question_id": 7,
+      "question_text": "L'assurance RC familiale couvre-t-elle tous les dégâts causés par mon enfant ?",
+      "relevant_article_ids": [
+        1942
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 11.380030121234162
+      }
+    },
+    {
+      "question_id": 32,
+      "question_text": "Taxe ou redevance, qu'est-ce que ça change ?",
+      "relevant_article_ids": [
+        9862
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 7.77210765225179
+      }
+    },
+    {
+      "question_id": 37,
+      "question_text": "Puis-je avoir une aide du CPAS pour payer ma facture d'eau en Wallonie ?",
+      "relevant_article_ids": [
+        17046,
+        17050,
+        36290,
+        17051,
+        36291,
+        17052,
+        36292,
+        17053,
+        36293,
+        17054,
+        36485,
+        36486,
+        36487,
+        36488
+      ],
+      "n_relevant_articles": 14,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 20.97292508593787
+      }
+    },
+    {
+      "question_id": 59,
+      "question_text": "Quels sont les risques si je ne paie plus mon crédit à la consommation ?",
+      "relevant_article_ids": [
+        1801,
+        8178,
+        9124,
+        9125,
+        9126,
+        9127,
+        9128,
+        9129,
+        20982,
+        20983,
+        20984,
+        20985
+      ],
+      "n_relevant_articles": 12,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 13.91462225201334
+      }
+    },
+    {
+      "question_id": 65,
+      "question_text": "Que faire si j'ai des difficultés pour rembourser mon ami ?",
+      "relevant_article_ids": [
+        1801,
+        34706
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 6.801376487866223
+      }
+    },
+    {
+      "question_id": 88,
+      "question_text": "Qu'est-ce qu'une cession de rémunération ?",
+      "relevant_article_ids": [
+        2472,
+        9300
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 25.80089291343809
+      }
+    },
+    {
+      "question_id": 105,
+      "question_text": "Puis-je proposer un médiateur de dettes ?",
+      "relevant_article_ids": [
+        9268
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 16.720179006991998
+      }
+    },
+    {
+      "question_id": 117,
+      "question_text": "Le règlement collectif de dettes arrête-t-il une mesure de coupure d'énergie ?",
+      "relevant_article_ids": [
+        9662,
+        9269,
+        9668,
+        9669
+      ],
+      "n_relevant_articles": 4,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 32.54335745641136
+      }
+    },
+    {
+      "question_id": 168,
+      "question_text": "J’ai fait une donation. Puis-je changer d’avis ?",
+      "relevant_article_ids": [
+        1421,
+        1139,
+        1425
+      ],
+      "n_relevant_articles": 3,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 7.952263873961502
+      }
+    },
+    {
+      "question_id": 178,
+      "question_text": "Je vis avec ma famille en Belgique. J'ai un enfant en Belgique. Je suis étranger. Qui peut obtenir un titre de séjour par la reconnaissance d'un enfant né en Belgique ?",
+      "relevant_article_ids": [
+        518
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 62.48163564979495
+      }
+    },
+    {
+      "question_id": 201,
+      "question_text": "Je vis avec ma famille en Belgique. Je me marie. Que se passe-t-il si je suis étranger et qu'on retarde la célébration de mon mariage ?",
+      "relevant_article_ids": [
+        316
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 32.62542810490282
+      }
+    },
+    {
+      "question_id": 205,
+      "question_text": "Je suis majeur. Je fais valoir des mérites exceptionnels. Comment se déroule la procédure de demande de naturalisation ?",
+      "relevant_article_ids": [
+        9824
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 37.40818158981371
+      }
+    },
+    {
+      "question_id": 228,
+      "question_text": "Je suis majeur. Je suis né en Belgique. Puis-je introduire un recours en cas d'avis négatif concernant ma demande de nationalité ?",
+      "relevant_article_ids": [
+        9818
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 36.93558863222836
+      }
+    },
+    {
+      "question_id": 230,
+      "question_text": "Je suis majeur. Je suis né en Belgique. A quelles conditions puis-je demander la nationalité belge si je suis né en Belgique ?",
+      "relevant_article_ids": [
+        9790,
+        9818
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 32.1722324370328
+      }
+    },
+    {
+      "question_id": 262,
+      "question_text": "Devant quel juge doit-on aller pour décider de l'hébergement des enfants ?",
+      "relevant_article_ids": [
+        684
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 29.351745351766407
+      }
+    },
+    {
+      "question_id": 275,
+      "question_text": "Les parents ne sont pas mariés ensemble. Le père de l'enfant est marié à quelqu'un d'autre que la mère. Devant quel tribunal aller en cas de problème lié à la filiation ?",
+      "relevant_article_ids": [
+        532,
+        8034
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 48.79819419008088
+      }
+    },
+    {
+      "question_id": 281,
+      "question_text": "Les parents ne sont pas mariés ensemble. La mère de l'enfant est mariée à quelqu'un d'autre que le père. Puis-je reconnaître mon enfant avant sa naissance si la mère est mariée à quelqu'un d'autre ?",
+      "relevant_article_ids": [
+        15,
+        177,
+        178,
+        63,
+        487,
+        488,
+        514
+      ],
+      "n_relevant_articles": 7,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 59.08835463494628
+      }
+    },
+    {
+      "question_id": 304,
+      "question_text": "Le juge de paix peut-il refuser le choix du tuteur fait par le(s) parent(s) ?",
+      "relevant_article_ids": [
+        721,
+        723
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 43.716597988223285
+      }
+    },
+    {
+      "question_id": 316,
+      "question_text": "Je suis parent. Mon ex ne paie plus les contributions alimentaires fixées dans un jugement depuis dix ans. Puis-je encore les réclamer ?",
+      "relevant_article_ids": [
+        51,
+        34427
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 15.22701001726783
+      }
+    },
+    {
+      "question_id": 345,
+      "question_text": "A quelles conditions dois-je payer une pension alimentaire à mon père/ma mère ?",
+      "relevant_article_ids": [
+        361,
+        365,
+        366,
+        367,
+        368
+      ],
+      "n_relevant_articles": 5,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 16.671724345115145
+      }
+    },
+    {
+      "question_id": 375,
+      "question_text": "Puis-je contester la décision de mise sous administration de biens et/ou de la personne ?",
+      "relevant_article_ids": [
+        8665,
+        8638
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 16.188558615270534
+      }
+    },
+    {
+      "question_id": 417,
+      "question_text": "J'ai signé une déclaration de cohabitation légale. En cohabitation légale, faut-il partager toutes les dépenses ?",
+      "relevant_article_ids": [
+        2059
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 38.00368530956728
+      }
+    },
+    {
+      "question_id": 454,
+      "question_text": "Je suis marié(e). Dois-je payer les dettes professionnelles de mon conjoint ?",
+      "relevant_article_ids": [
+        1637,
+        1970,
+        1971
+      ],
+      "n_relevant_articles": 3,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 16.86276551203258
+      }
+    },
+    {
+      "question_id": 495,
+      "question_text": "Je vis en union libre. A qui appartient la maison construite ensemble sur mon terrain ?",
+      "relevant_article_ids": [
+        926
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 4.783201095827701
+      }
+    },
+    {
+      "question_id": 499,
+      "question_text": "Je vis en union libre. Quels sont les droits de mon partenaire sur nos enfants nés en union libre ?",
+      "relevant_article_ids": [
+        24,
+        190,
+        25,
+        26,
+        193,
+        27,
+        28,
+        29,
+        62,
+        484,
+        485,
+        106,
+        682,
+        683
+      ],
+      "n_relevant_articles": 14,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 9.068714543537123
+      }
+    },
+    {
+      "question_id": 542,
+      "question_text": "Je divorce. En tant que victime de violences conjugales, puis-je divorcer si mon mari refuse ?",
+      "relevant_article_ids": [
+        5180,
+        4585
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 8.840946928880662
+      }
+    },
+    {
+      "question_id": 556,
+      "question_text": "Puis-je reconnaître un enfant après avoir réussi à faire annuler un lien de filiation avec son père ?",
+      "relevant_article_ids": [
+        24,
+        190,
+        25,
+        26,
+        193,
+        27,
+        28,
+        29,
+        62,
+        484,
+        485,
+        490
+      ],
+      "n_relevant_articles": 12,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 21.31308116649568
+      }
+    },
+    {
+      "question_id": 617,
+      "question_text": "J'ai droit à l'aide juridique, dois-je payer des frais de justice ?",
+      "relevant_article_ids": [
+        6788,
+        6789,
+        6790,
+        6791,
+        6792,
+        6793,
+        6795,
+        6796,
+        6797,
+        6798,
+        6799,
+        7654,
+        7655,
+        7656,
+        7657,
+        7658,
+        6800,
+        7660,
+        7661,
+        7662,
+        7663,
+        7666,
+        7667,
+        7668,
+        7669,
+        7670,
+        6801,
+        6802,
+        6803,
+        7674,
+        6804,
+        7676,
+        7677
+      ],
+      "n_relevant_articles": 33,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 25.806171992973038
+      }
+    },
+    {
+      "question_id": 634,
+      "question_text": "Si j’ai commis une infraction, peut-on me proposer de payer une certaine somme d’argent sans que je sois condamné par un juge ?",
+      "relevant_article_ids": [
+        3375
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 34.6809963084554
+      }
+    },
+    {
+      "question_id": 672,
+      "question_text": "J'ai commis une infraction. Quels sont mes droits pendant cette audition à la police en tant que suspect ?",
+      "relevant_article_ids": [
+        3059,
+        3133,
+        3180,
+        3208,
+        3076
+      ],
+      "n_relevant_articles": 5,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 24.88746002211594
+      }
+    },
+    {
+      "question_id": 691,
+      "question_text": "Ai-je droit à l'aide juridique (ex pro deo) si je ne fais partie d'aucune de ces catégories ?",
+      "relevant_article_ids": [
+        6788,
+        6789,
+        6790,
+        6791,
+        6792,
+        6793,
+        6795,
+        6796,
+        6797,
+        6798,
+        6799,
+        7654,
+        7655,
+        7656,
+        7657,
+        7658,
+        6800,
+        7660,
+        7661,
+        7662,
+        7663,
+        7666,
+        7667,
+        7668,
+        7669,
+        7670,
+        6801,
+        6802,
+        6803,
+        7674,
+        6804,
+        7676,
+        7677,
+        8025,
+        8026,
+        8210,
+        8211,
+        8212,
+        8027,
+        8214,
+        8215,
+        8216,
+        8217,
+        8218,
+        8219,
+        8221,
+        8222,
+        8223,
+        8224,
+        8226,
+        8228,
+        8229,
+        8230,
+        8231,
+        8232,
+        8233,
+        8234
+      ],
+      "n_relevant_articles": 57,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 21.210695558073787
+      }
+    },
+    {
+      "question_id": 701,
+      "question_text": "J'ai une procédure dans un autre arrondissement judiciaire, que faire ?",
+      "relevant_article_ids": [
+        6788,
+        6789,
+        6790,
+        6791,
+        6792,
+        6793,
+        6795,
+        6796,
+        6797,
+        6798,
+        6799,
+        7654,
+        7655,
+        7656,
+        7657,
+        7658,
+        6800,
+        7660,
+        7661,
+        7662,
+        7663,
+        7666,
+        7667,
+        7668,
+        7669,
+        7670,
+        6801,
+        6802,
+        6803,
+        7674,
+        6804,
+        7676,
+        7677,
+        8025,
+        8026,
+        8210,
+        8211,
+        8212,
+        8027,
+        8214,
+        8215,
+        8216,
+        8217,
+        8218,
+        8219,
+        8221,
+        8222,
+        8223,
+        8224,
+        8226,
+        8228,
+        8229,
+        8230,
+        8231,
+        8232,
+        8233,
+        8234
+      ],
+      "n_relevant_articles": 57,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 8.205906604497489
+      }
+    },
+    {
+      "question_id": 724,
+      "question_text": "La police peut-elle me fouiller pour chercher du cannabis ?",
+      "relevant_article_ids": [
+        3080
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "middle",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 11.819065715913794
+      }
+    },
+    {
+      "question_id": 727,
+      "question_text": "Est-ce interdit de faire des tags/graffitis sur un mur ?",
+      "relevant_article_ids": [
+        4610,
+        5466,
+        5467
+      ],
+      "n_relevant_articles": 3,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 15.925221755240225
+      }
+    },
+    {
+      "question_id": 733,
+      "question_text": "Comment se déroule une expulsion ?",
+      "relevant_article_ids": [
+        9138,
+        8182,
+        8183,
+        8185,
+        8187
+      ],
+      "n_relevant_articles": 5,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 10.246183883890827
+      }
+    },
+    {
+      "question_id": 759,
+      "question_text": "Mon logement est insalubre et le propriétaire ne réagit pas. Puis-je faire effectuer les travaux nécessaires et lui envoyer la facture en Wallonie ?",
+      "relevant_article_ids": [
+        8045,
+        8189
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 21.362165104467252
+      }
+    },
+    {
+      "question_id": 761,
+      "question_text": "Je pense que mon logement est insalubre. Je m'adresse à la police car je suis victime d'un marchand de sommeil. Quelles sont les sanctions pour le propriétaire marchand de sommeil ?",
+      "relevant_article_ids": [
+        4583,
+        5310
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 28.065257497181122
+      }
+    },
+    {
+      "question_id": 766,
+      "question_text": "Je pense que mon logement est insalubre. Je m'adresse à la Région wallonne ou à la commune compétente en vue de faire réaliser une enquête de salubrité et de surpeuplement. Quelles sont les conséquences du résultat de l'enquête en Wallonie ?",
+      "relevant_article_ids": [
+        10093,
+        10094,
+        10095,
+        10519,
+        10520,
+        10096,
+        10097,
+        10098,
+        10099
+      ],
+      "n_relevant_articles": 9,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 67.58465778474225
+      }
+    },
+    {
+      "question_id": 841,
+      "question_text": "Je loue une caravane dans un camping à l'année. Quelles règles s'appliquent à mon bail à Bruxelles ?",
+      "relevant_article_ids": [
+        11093
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 33.1778324230799
+      }
+    },
+    {
+      "question_id": 867,
+      "question_text": "Après 9 ans, que se passe-t-il si j’occupe encore le logement à Bruxelles ?",
+      "relevant_article_ids": [
+        11094
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 13.108204390058617
+      }
+    },
+    {
+      "question_id": 875,
+      "question_text": "Mon propriétaire peut-il mettre fin au bail de 9 ans pour faire des travaux dans le logement à Bruxelles ?",
+      "relevant_article_ids": [
+        11094
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 47.18726776864873
+      }
+    },
+    {
+      "question_id": 897,
+      "question_text": "Puis-je mettre fin au bail à vie à Bruxelles ?",
+      "relevant_article_ids": [
+        11416,
+        11094
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 28.54452628144856
+      }
+    },
+    {
+      "question_id": 904,
+      "question_text": "Mon propriétaire peut-il mettre fin au bail pour vendre le logement que j’occupe à Bruxelles ?",
+      "relevant_article_ids": [
+        11088,
+        11414
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 30.074743706488263
+      }
+    },
+    {
+      "question_id": 922,
+      "question_text": "Dois-je prendre une assurance incendie si je suis locataire à Bruxelles ?",
+      "relevant_article_ids": [
+        2252,
+        2254,
+        2258,
+        1584,
+        1630,
+        1941,
+        1942
+      ],
+      "n_relevant_articles": 7,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 3.5769569360492137
+      }
+    },
+    {
+      "question_id": 933,
+      "question_text": "Qui doit payer les réparations des dégâts causés par un vol avec effraction à Bruxelles ?",
+      "relevant_article_ids": [
+        11371
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "middle",
+        "cross_ref": "without_cross_refs",
+        "bm25_score": 27.476417511950167
+      }
+    },
+    {
+      "question_id": 1040,
+      "question_text": "Puis-je introduire un recours en urgence ?",
+      "relevant_article_ids": [
+        7799
+      ],
+      "n_relevant_articles": 1,
+      "strata": {
+        "article_count": "single_article",
+        "lex_align": "semantically_paraphrased",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 8.763929528760734
+      }
+    },
+    {
+      "question_id": 1053,
+      "question_text": "A-t-on droit à l'allocation de naissance en cas de fausse couche ou d'enfant mort-né en Wallonie ?",
+      "relevant_article_ids": [
+        26,
+        193
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "lexically_aligned",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 37.27044256406565
+      }
+    },
+    {
+      "question_id": 1099,
+      "question_text": "Je reçois les confidences en tant que professionnel. Je travaille dans un CPAS, dois-je répondre aux demandes d’informations du procureur du Roi pour lutter contre le terrorisme ?",
+      "relevant_article_ids": [
+        3173,
+        4494
+      ],
+      "n_relevant_articles": 2,
+      "strata": {
+        "article_count": "multi_article",
+        "lex_align": "middle",
+        "cross_ref": "with_cross_refs",
+        "bm25_score": 27.80667979119096
+      }
+    }
+  ]
+}

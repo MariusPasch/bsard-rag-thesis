@@ -1,0 +1,65 @@
+# ═══════════════════════════════════════════════════════════════════════
+# .gitignore — RQ3_Autonomous_Evaluation
+# ═══════════════════════════════════════════════════════════════════════
+
+# ── Virtual environment ────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Python artefacts ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Jupyter ────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Large / binary data files ──────────────────────────────────────────
+# Large and binary files are not committed. RQ3 reuses the RQ1 data subset
+# of the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data`,
+# which downloads into the local gitignored data root (BSARD_DATA_DIR,
+# default <repo>/output). See README.md §4 "Data" for the full policy.
+data_storage/
+
+# ── Large data file types (safety net) ─────────────────────────────────
+*.db
+*.parquet
+*.jsonl
+*.npy
+*.faiss
+*.index
+*.bin
+*.safetensors
+*.gguf
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# ── Output artefacts (regenerable) ─────────────────────────────────────
+output/
+
+# ── Environment variables ──────────────────────────────────────────────
+.env
+.env.local
+
+# ── OS files ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ── Experiment tracking (if used) ──────────────────────────────────────
+wandb/
+mlruns/
+
+# ── AI assistant artefacts ─────────────────────────────────────────────
+.claude/

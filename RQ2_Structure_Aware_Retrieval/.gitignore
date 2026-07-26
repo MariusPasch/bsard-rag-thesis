@@ -1,0 +1,96 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ── Large data ────────────────────────────────────────────────────────────────
+# Downloaded from Hugging Face into the data root, never in git.
+# Default data root is data/ (override with RQ2_DATA_DIR). See
+# scripts/download_data.py. Paths are ANCHORED to repo root so that the tracked
+# RQ2_T00_ORCHESTRATOR/data/ (registry JSONs) is NOT ignored.
+/data/
+
+# Per-sub-project data junctions (recreated by scripts/setup/link_data.py).
+/RQ2_T02_DATA_LOADER/data/
+/RQ2_T03_ARM1_NAIVE/data/
+/RQ2_T04_ARM2_METADATA/data/
+/RQ2_T04_ARM2_METADATA/azuredi/
+/RQ2_T05_ARM2_PAGEINDEX/data/
+/RQ2_T07_EVALUATION/data/
+
+# Top-level junction into the separate Dataset_Creation project.
+/dataset_creation_output/
+
+# Machine-specific validation snapshots / run outputs (regenerable; embed
+# absolute paths). Keep ONLY the curated-PDF registry the code reads.
+/RQ2_T00_ORCHESTRATOR/data/*
+!/RQ2_T00_ORCHESTRATOR/data/selected_pdfs.json
+
+# Generated experiment run artefacts (regenerable; belong in the HF data bundle).
+# The experiment SOURCE (scripts, notebooks, corrective/*.py) is kept; only the
+# built trees and per-run outputs are excluded.
+/RQ2_T04_ARM2_METADATA/experiments/arm2c/bundles/
+/RQ2_T04_ARM2_METADATA/experiments/arm2c/runs/
+/RQ2_T03_ARM1_NAIVE/inspect_output/
+
+# Large binary artefacts (kept out of git regardless of location).
+# NOTE: the repo-root .gitignore ignores *.jsonl globally. We deliberately
+# re-include T07's small ground-truth JSONL here (this deeper .gitignore takes
+# precedence over the root rule). Bulk *.jsonl data still lives under the
+# anchored data dirs ignored above and stays untracked.
+!/RQ2_T07_EVALUATION/ground_truth/**/*.jsonl
+*.db
+*.parquet
+*.npy
+*.faiss
+*.index
+*.pkl
+*.bm25
+*.zip
+
+# Model weights
+models/
+*.bin
+*.safetensors
+*.gguf
+
+# Environment variables
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+.streamlit/secrets.toml
+
+# AI assistant / local agent settings
+.claude/
+
+# Experiment tracking
+wandb/
+mlruns/
+
+# Logs
+*.log
+logs/
+
+# Report: ship the cleaned figure/table build layer (scripts + helper modules),
+# the .tex tables, and the PNG figures. Keep regenerated PDF figures out of git
+# (thesis_style.save_figure defaults to PNG-only).
+/Report/figures/*.pdf
+docs/

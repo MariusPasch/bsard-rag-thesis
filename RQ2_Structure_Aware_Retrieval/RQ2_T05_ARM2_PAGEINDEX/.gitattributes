@@ -1,0 +1,25 @@
+# Jupyter notebooks: last-write-wins on merge conflicts.
+#
+# Same policy as RQ2_T03_ARM1_NAIVE/.gitattributes and
+# RQ2_T04_ARM2_METADATA/.gitattributes. Rationale: notebooks here are
+# analysis / runbook artefacts edited on one machine at a time (the GPU
+# run happens on a separate compute instance). We don't want merge markers
+# in JSON, and we accept silently dropping diverged edits in exchange for
+# friction-free pulls.
+#
+# Requires a one-time per-clone git config on every machine that pulls
+# this repo — without it, git falls back to the default merge and you'll
+# see conflict markers in the .ipynb JSON:
+#
+#     git config --global merge.theirs.name "always take incoming"
+#
+#     # PowerShell / Windows:
+#     git config --global merge.theirs.driver 'cmd /c copy /Y \"%B\" \"%A\"'
+#
+#     # bash / Linux / macOS (e.g. Azure compute instance):
+#     git config --global merge.theirs.driver 'cp -f "%B" "%A"'
+#
+# %A is the current/ours file; %B is the incoming/theirs file. The driver
+# copies %B over %A and exits 0 — git treats the conflict as resolved.
+
+*.ipynb merge=theirs

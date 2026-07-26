@@ -1,0 +1,56 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large data files — downloaded from Hugging Face into the data root, never in git.
+# Default data root is output/ (override with BSARD_DATA_DIR). See scripts/download_data.py.
+# Anchored to repo root so the tracked evaluation/data/ directory is NOT ignored.
+/output/
+/data/
+*.db
+*.parquet
+*.jsonl
+*.npy
+*.faiss
+*.index
+
+# Model weights
+models/
+*.bin
+*.safetensors
+*.gguf
+
+# Environment variables
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# AI assistant / local agent settings
+.claude/
+
+# Experiment artefacts — result JSONs go to the data root's results/, not git
+wandb/
+mlruns/
+
+# Report & presentation artefacts — built locally, not tracked
+docs/
+Report/

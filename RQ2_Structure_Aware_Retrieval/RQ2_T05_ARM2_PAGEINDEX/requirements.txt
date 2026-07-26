@@ -1,0 +1,20 @@
+# Core
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+tqdm>=4.66
+
+# Visualisation (analysis notebooks)
+matplotlib>=3.8
+
+# LLM backend (Ollama must be running separately)
+ollama>=0.2
+
+# Azure Blob round-trip (used by scripts/upload_to_blob.py and the analysis notebook)
+azure-storage-blob>=12.19
+
+# Sibling packages — install with:
+#   pip install -e ../RQ2_T01_SHARED
+#   pip install -e ../RQ2_T02_DATA_LOADER
+#   pip install -e ../RQ2_T03_ARM1_NAIVE
+#   pip install -e ../RQ2_T04_ARM2_METADATA

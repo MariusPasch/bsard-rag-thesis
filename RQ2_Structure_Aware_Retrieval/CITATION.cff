@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: >-
+  BSARD Retrieval (RQ2): Naive, Metadata-Aware and
+  PageIndex Retrieval Arms over Belgian Statutory Law
+message: >-
+  If you use this software, please cite it using these
+  metadata. Please also cite the underlying BSARD dataset
+  (see DATA_LICENSE.md).
+type: software
+authors:
+  - given-names: Marios
+    family-names: Paschalidis
+    email: paschalidismarios@gmail.com
+    affiliation: KU Leuven
+repository-code: "https://github.com/MariusPasch/bsard-rag-thesis"
+abstract: >-
+  Code and experiments for RQ2 of a master's thesis at
+  KU Leuven: a per-document comparison of three retrieval
+  arms over Belgian statutory law — Arm 1 (naive
+  chunk-and-embed), Arm 2A (metadata-aware structural
+  retrieval), and Arm 2B (PageIndex LLM tree navigation),
+  plus an agentic Arm 2C corrective-loop extension — all
+  grounded in the Belgian Statutory Article Retrieval
+  Dataset (BSARD).
+keywords:
+  - information retrieval
+  - legal NLP
+  - retrieval-augmented generation
+  - BSARD
+  - structural retrieval
+  - PageIndex
+license: MIT
+version: "1.0.0"
+date-released: "2026-06-16"
+references:
+  - type: article
+    title: A Statutory Article Retrieval Dataset in French
+    authors:
+      - given-names: Antoine
+        family-names: Louis
+      - given-names: Gerasimos
+        family-names: Spanakis
+    year: 2022
+    collection-title: >-
+      Proceedings of the 60th Annual Meeting of the
+      Association for Computational Linguistics

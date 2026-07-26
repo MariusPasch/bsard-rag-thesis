@@ -1,0 +1,6 @@
+data:
+  pdf_dir: data/pdfs
+  documents_csv: data/csv/MyDocuments.csv
+  definitions_csv: data/csv/DocumentDefinitions.csv
+  pdf_document_map: data/csv/pdf_document_map.csv
+  # articles_csv: data/csv/DocumentArticles.csv  # uncomment when articles CSV is available

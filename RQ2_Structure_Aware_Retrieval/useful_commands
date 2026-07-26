@@ -1,0 +1,78 @@
+*Run visualization on a SAVED preprocessed bundle (Code Civil, qid=192)*
+
+1. Go to the folder:
+
+cd "<repo>\RQ2_Structure_Aware_Retrieval\RQ2_T08_RAG_VISUALIZATION"
+
+
+2. Activate T08's venv:
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+
+.\.venv\Scripts\Activate.ps1
+
+
+3. Launch the viewer pointed at the preprocessed bundle:
+
+.\.venv\Scripts\streamlit.exe run src\visualization\app.py -- `
+  --bundle-json="..\RQ2_T03_ARM1_NAIVE\data\1804_03_21_1804032150\t08_bundles\483beb56a47b\q192.json" `
+  --db="$env:RQ2_BSARD_DB" `
+  --mode=retrieval --arm=arm1
+
+
+Notes:
+- The bundle ships its own raw_text + article_spans, so the viewer does NOT
+  re-chunk or re-locate articles — it renders the preprocessed top-200 pool
+  (method=arm1_pool) for qid=192 directly.
+- --db is only used to populate the article-text expanders / GT panel labels;
+  retrieval itself is fully offline against the bundle.
+- GT bsard_ids: [920, 1014, 1045] (Art. 32 / 146bis / 193ter, Code Civil).
+  Expected: 10 correctly-retrieved chunks (green ✓) and 190 wrongly-retrieved
+  chunks (red ✗) in the top-200 pool.
+
+
+*Legacy: live BM25 demo (re-chunks each launch — no preprocessed bundle)*
+
+python demo_bm25.py --pdf 2004_05_27_2004A27101.pdf --question-id 38 --top-k 100
+
+
+
+
+
+  Best PDF for benchmarking: img_l_pdf_1804_03_21_1804032150_F.pdf (Code Civil)                                                                                                 
+                                                                                                                                                                                
+  This is the clear winner across every metric that matters:
+                                                                                                                                                                                
+  ┌───────────────────────────────────────────┬───────────────────────┬────────────────────────┬────────────────────────┐
+  │                  Metric                   │ Code Civil 1804032150 │ Next best (1804032153) │ Next best (1967101055) │
+  ├───────────────────────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
+  │ Questions referencing this PDF            │                   265 │                    131 │                    219 │
+  ├───────────────────────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
+  │ Questions wholly answerable from this PDF │                   196 │                     86 │                    103 │
+  ├───────────────────────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
+  │ ...with all relevant articles FOUND       │                   112 │                     78 │                     55 │
+  ├───────────────────────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
+  │ ...and ≥2 articles (multi-article subset) │                    60 │                     17 │                     34 │
+  ├───────────────────────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
+  │ Internal FOUND rate                       │                 81.3% │                  89.7% │                  81.4% │
+  └───────────────────────────────────────────┴───────────────────────┴────────────────────────┴────────────────────────┘
+
+  
+
+  Suggested visualization / manual-test sample: qid=192 (train)
+
+  ▎ "Je vis avec ma famille en Belgique. Je me marie. Je suis étranger : peut-on demander l'annulation de notre mariage ?"
+
+  Three relevant articles, all FOUND in this PDF, all single-PDF:
+
+  ┌──────────┬────────────────┬─────────────────────────┐
+  │ bsard_id │ Article number │   Code Civil section    │
+  ├──────────┼────────────────┼─────────────────────────┤
+  │ 920      │ Art. 32        │ Acts of civil status    │
+  ├──────────┼────────────────┼─────────────────────────┤
+  │ 1014     │ Art. 146bis    │ Conditions for marriage │
+  ├──────────┼────────────────┼─────────────────────────┤
+  │ 1045     │ Art. 193ter    │ Nullity of marriage     │
+  └──────────┴────────────────┴─────────────────────────┘
+
+

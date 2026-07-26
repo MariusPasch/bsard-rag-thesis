@@ -1,0 +1,42 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data & outputs (large files — store separately).
+# Ignore data/ contents but keep the curated-PDF registry (code reads it).
+data/*
+!data/selected_pdfs.json
+outputs/
+results/
+*.pkl
+*.npy
+*.faiss
+*.index
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / config overrides
+.env
+config.local.yaml

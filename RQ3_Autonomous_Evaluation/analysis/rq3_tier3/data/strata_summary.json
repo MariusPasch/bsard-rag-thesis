@@ -1,0 +1,43 @@
+{
+  "total": 48,
+  "axes": {
+    "article_count": {
+      "single_article": 17,
+      "multi_article": 31
+    },
+    "lex_align": {
+      "semantically_paraphrased": 11,
+      "middle": 21,
+      "lexically_aligned": 16
+    },
+    "cross_ref": {
+      "without_cross_refs": 9,
+      "with_cross_refs": 39
+    },
+    "law_code": {
+      "Code Civil": 19,
+      "La Constitution": 1,
+      "Code de l'Eau intégré au Code Wallon de l'Environnement": 1,
+      "Code Judiciaire": 10,
+      "Code de la Nationalité Belge": 3,
+      "Code Pénal": 4,
+      "Code d'Instruction Criminelle": 3,
+      "Code Wallon de l'Habitation Durable": 1,
+      "Code Bruxellois du Logement": 6
+    }
+  },
+  "cells": {
+    "(single_article, semantically_paraphrased, without_cross_refs)": 2,
+    "(single_article, semantically_paraphrased, with_cross_refs)": 2,
+    "(multi_article, middle, with_cross_refs)": 15,
+    "(multi_article, semantically_paraphrased, with_cross_refs)": 5,
+    "(single_article, middle, with_cross_refs)": 3,
+    "(multi_article, lexically_aligned, with_cross_refs)": 7,
+    "(multi_article, semantically_paraphrased, without_cross_refs)": 2,
+    "(single_article, lexically_aligned, without_cross_refs)": 1,
+    "(single_article, lexically_aligned, with_cross_refs)": 7,
+    "(multi_article, lexically_aligned, without_cross_refs)": 1,
+    "(multi_article, middle, without_cross_refs)": 1,
+    "(single_article, middle, without_cross_refs)": 2
+  }
+}

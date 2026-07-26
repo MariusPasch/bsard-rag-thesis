@@ -1,0 +1,26 @@
+# Core
+pandas>=2.0
+numpy>=1.26
+scipy>=1.11
+pyyaml>=6.0
+tqdm>=4.66
+
+# PDF processing
+PyMuPDF>=1.23
+
+# Embeddings & retrieval
+sentence-transformers>=2.7
+faiss-cpu>=1.8
+rank-bm25>=0.2
+transformers>=4.40
+
+# Agentic framework
+langgraph>=0.1
+langchain>=0.2
+langchain-community>=0.2
+
+# LLM backend (Ollama must be running separately)
+ollama>=0.2
+
+# Graph
+networkx>=3.3

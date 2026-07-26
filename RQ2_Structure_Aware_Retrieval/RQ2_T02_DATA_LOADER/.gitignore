@@ -1,0 +1,45 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data & outputs (large files — store separately).
+# pdf_document_map.csv is an exception: it feeds the T04 cache fingerprint, so
+# both dev machines must hold byte-identical copies (.gitattributes locks LF).
+data/*
+!data/csv/
+data/csv/*
+!data/csv/pdf_document_map.csv
+outputs/
+results/
+*.pkl
+*.npy
+*.faiss
+*.index
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / config overrides
+.env
+config.local.yaml

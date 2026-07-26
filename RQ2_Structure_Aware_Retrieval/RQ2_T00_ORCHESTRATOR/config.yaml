@@ -1,0 +1,58 @@
+# Input paths
+data:
+  pdf_dir: "../RQ2_T02_DATA_LOADER/data/pdfs/"
+  documents_csv: "../RQ2_T02_DATA_LOADER/data/csv/MyDocuments.csv"
+  definitions_csv: "../RQ2_T02_DATA_LOADER/data/csv/DocumentDefinitions.csv"
+  pdf_document_map: "../RQ2_T02_DATA_LOADER/data/csv/pdf_document_map.csv"
+  ground_truth_dir: "../RQ2_T07_EVALUATION/ground_truth/"          # full split GT (scans *.json, skips schema.json)
+  # ground_truth_file: "../RQ2_T07_EVALUATION/ground_truth/runs/<run_name>.json"  # optional curated subset; wins over ground_truth_dir
+  bsard_db: "../data/bsard_corpus.db"   # <repo>/data is the RQ2_DATA_DIR default; override with the RQ2_BSARD_DB env var
+  index_dir: "data/indices/"
+
+# Models — used by 01_SHARED
+models:
+  embedding_model: "intfloat/multilingual-e5-large-instruct"
+  embedding_model_fallback: "BAAI/bge-m3"
+  embedding_max_tokens: 512
+  llm_model: "llama3.1:8b"
+  llm_temperature: 0.0
+  ollama_base_url: "http://localhost:11434"
+
+# Arm 1 — used by 03_ARM1_NAIVE
+arm1:
+  strategy: "sliding_window"      # "sliding_window" or "recursive"
+  window_size: 512                # tokens (sliding_window only)
+  stride: 256                     # tokens (sliding_window only)
+  max_tokens: 512                 # tokens (recursive only)
+  retrieval_top_k: 100
+  top_k: 100
+
+# Arm 2 — used by 04/05 sub-projects
+arm2:
+  metadata_filtering:
+    variants: ["raw", "enriched", "filtered", "full", "terms"]
+    boost_config:
+      term_match: 1.3
+      used_in: 1.5
+      jurisdiction: 1.1
+    retrieval_top_k: 100
+    top_k: 100
+
+  pageindex:
+    max_iterations: 3
+    max_laws_selected: 3
+    max_chapters_selected: 5
+    skip_law_selection_if_single_doc: true
+
+# Evaluation — used by 07_EVALUATION
+evaluation:
+  metrics: ["recall@100", "recall@10", "mrr@10", "ndcg@10"]
+  use_autonomous_eval: true
+  stratified_analysis: true
+
+# Output
+output:
+  results_dir: "data/results/"
+  logs_dir: "data/logs/"
+  save_traces: true
+  save_retrieval_lists: true

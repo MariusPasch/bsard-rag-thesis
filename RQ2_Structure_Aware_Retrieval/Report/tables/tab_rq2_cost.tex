@@ -1,0 +1,11 @@
+\begin{tabular}{l S[table-format=1.1] r S[table-format=2.1] S[table-format=2.1] S[table-format=1.3]}
+\toprule
+Arm & {LLM calls/q} & {tokens/q} & {lat.\ mean (s)} & {lat.\ p95 (s)} & {E/R@10} \\
+\midrule
+Arm 1 (Naive, RRF over chunks) & 0.0 & 0 & {--} & {--} & 0.483 \\
+Arm 2A: summary-node (canonical) & 0.0 & 0 & {0.9} & {1.5} & 0.472 \\
+Arm 2B (PageIndex, LLM nav) & 5.8 & 18\,868 & {38.4} & {50.0} & 0.175 \\
+Arm 2C (simple nav) & 12.8 & -- & {32.3} & {60.1} & 0.263 \\
+Arm 2C (CNR) & 24.9 & -- & {81.1} & {127.4} & 0.379 \\
+\bottomrule
+\end{tabular}

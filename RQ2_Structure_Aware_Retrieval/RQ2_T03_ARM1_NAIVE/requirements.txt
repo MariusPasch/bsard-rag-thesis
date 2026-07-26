@@ -1,0 +1,12 @@
+# Core
+numpy>=1.26
+tqdm>=4.66
+
+# PDF text extraction (same method as Dataset_Creation — required by locate_articles)
+PyMuPDF>=1.23
+
+# Tokenizer (for chunking — must match the embedding model's tokenizer)
+transformers>=4.40
+
+# Sibling packages — install with: pip install -e ../RQ2_T01_SHARED
+# pip install -e ../RQ2_T02_DATA_LOADER
