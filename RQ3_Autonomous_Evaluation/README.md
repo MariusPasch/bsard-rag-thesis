@@ -151,7 +151,7 @@ available for decoupled or batch use:
 This component ships **no data of its own** — it is a pure evaluation harness.
 It consumes the **RQ1 result JSONs**, which are the `rq1/` subset of the
 companion Hugging Face dataset
-[`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data).
+[`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data).
 
 Large and binary files are **not** committed to git; they download into a local
 gitignored data root:
@@ -462,7 +462,7 @@ bsard-rag-thesis/
 
 The corpus artefacts the assembler reads (parquet, qrels) are not shipped here;
 obtain them from RQ1 — i.e. the **`rq1/` subset** of the combined Hugging Face
-dataset [`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data)
+dataset [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data)
 (pull it with `python data_tooling/download_combined_hf.py --subset rq1` from the
 mono-repo root; CC BY-NC-SA 4.0 — see [DATA_LICENSE.md](DATA_LICENSE.md)).
 

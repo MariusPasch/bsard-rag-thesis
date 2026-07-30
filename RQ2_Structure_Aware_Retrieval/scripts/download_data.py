@@ -4,7 +4,7 @@ RQ2 spans nine sub-projects whose large inputs (the BSARD corpus DB, the Azure
 Document Intelligence exports, the per-arm FAISS / BM25 / PageIndex indices and
 their cached embeddings, and the experiment result JSONs) are not stored in git.
 They live in the ``rq2/`` subset of the combined dataset
-``mpaschalidis/bsard-rag-thesis-data`` and are downloaded into the local data
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data`` and are downloaded into the local data
 root, with any byte-shards transparently reassembled. The subset's internal
 layout mirrors the project's shared data tree:
 
@@ -35,7 +35,7 @@ import os
 import sys
 from pathlib import Path
 
-DEFAULT_HF_REPO = "mpaschalidis/bsard-rag-thesis-data"
+DEFAULT_HF_REPO = "Marios-Paschalidis-Thesis/bsard-rag-thesis-data"
 SUBSET = "rq2"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent

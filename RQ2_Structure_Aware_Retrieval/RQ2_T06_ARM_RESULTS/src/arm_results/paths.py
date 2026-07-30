@@ -3,7 +3,7 @@
 T06 reads each arm's *persisted* per-query rankings (no retrieval rerun) and the
 per-PDF ground-truth files owned by T07. The large data artefacts are not in git:
 they live in the companion Hugging Face dataset
-``mpaschalidis/bsard-rag-thesis-data`` (subset ``rq2``) and download into a local
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data`` (subset ``rq2``) and download into a local
 gitignored data root via ``scripts/download_data.py``. Each sub-project's
 ``data/`` is wired to that root via ``scripts/setup/link_data.py``.
 

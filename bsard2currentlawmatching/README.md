@@ -2,7 +2,7 @@
 
 **Author:** Marios Paschalidis | **Last updated:** 2026-05-17
 **Parent project:** BSARD RAG Thesis
-**Data:** the `corpus/` subset of [`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data) on Hugging Face
+**Data:** the `corpus/` subset of [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data) on Hugging Face
 
 ---
 
@@ -139,7 +139,7 @@ python pipeline/build_clean_dataset.py       # bsard_articles_clean.jsonl from b
 The canonical dataset (~268 MB) is the **`corpus/` subset** of the combined
 thesis dataset on Hugging Face:
 
-- **Combined dataset:** [`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data), subset `corpus/` (override the repo with `BSARD_HF_COMBINED_REPO`)
+- **Combined dataset:** [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data), subset `corpus/` (override the repo with `BSARD_HF_COMBINED_REPO`)
 - See the mono-repo [DATA_CARD.md](../DATA_CARD.md) for the full layout and the re-upload procedure.
 
 It contains the two authoritative SQLite databases (everything else in the project derives from them), a handful of small support files, and the pipeline's source CSV. Bulky derived artifacts (full Parquet/JSONL exports, 49 source PDFs, Phase A/B/C intermediate JSONLs) are not republished — they regenerate locally from the published DBs and CSV via the pipeline scripts. Per-file contents are detailed in [DATA_CARD.md](DATA_CARD.md); licensing in [DATA_LICENSE.md](DATA_LICENSE.md).

@@ -8,7 +8,7 @@ Arm 2B: ToC-tree construction and LLM-guided hierarchical navigation (vectorless
 
 ### Step 1 — Download the data bundle and wire `data/`
 
-Large artefacts are not committed to git. They live in the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) and download into the data root (env `RQ2_DATA_DIR`, default `<repo>/data`). Run once from the component root:
+Large artefacts are not committed to git. They live in the companion Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) and download into the data root (env `RQ2_DATA_DIR`, default `<repo>/data`). Run once from the component root:
 
 ```powershell
 python scripts/download_data.py

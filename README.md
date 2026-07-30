@@ -33,7 +33,7 @@ No large data lives in git. All artefacts live in **one** companion Hugging Face
 dataset, organised into per-component subsets, and download into local,
 gitignored data roots.
 
-- Dataset: `mpaschalidis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
+- Dataset: `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
 - Layout: `corpus/`, `rq1/`, `rq2/` (RQ3 reuses the `rq1/` subset)
 - Install the tooling deps once: `pip install -r requirements.txt`
 - Pull everything: `python data_tooling/download_combined_hf.py`

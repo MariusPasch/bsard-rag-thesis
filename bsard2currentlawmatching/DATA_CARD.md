@@ -1,7 +1,7 @@
 # Data bundle — bsard2currentlawmatching (corpus)
 
 The large artefacts for this project are **not** stored in git. They live in the
-companion **Hugging Face dataset** `mpaschalidis/bsard-rag-thesis-data` (subset
+companion **Hugging Face dataset** `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset
 `corpus/`) and download on demand into a local gitignored data root.
 
 - Data root: env `CORPUS_DATA_DIR`, default `<repo>/output` (gitignored)
@@ -17,7 +17,7 @@ companion **Hugging Face dataset** `mpaschalidis/bsard-rag-thesis-data` (subset
 
 > **Mono-repo note:** this corpus is the foundational dataset that the RQ1-RQ3
 > retrieval projects consume. It is the `corpus/` subset of the combined Hugging
-> Face dataset `mpaschalidis/bsard-rag-thesis-data`, published alongside the
+> Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data`, published alongside the
 > `rq1/` and `rq2/` subsets. See the mono-repo [DATA_CARD.md](../DATA_CARD.md)
 > for the full layout.
 

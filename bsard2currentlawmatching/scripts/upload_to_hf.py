@@ -4,7 +4,7 @@ Mirrors the local `output/` directory to a Hugging Face dataset repo so the
 SQLite databases, Parquet exports, JSONL exports, and source PDFs can be
 downloaded by anyone via `scripts/download_from_hf.py`.
 
-Authentication: run `huggingface-cli login` once, or set the HF_TOKEN env var
+Authentication: run `hf auth login` once, or set the HF_TOKEN env var
 to a token that has write access to the target repo.
 
 Usage:

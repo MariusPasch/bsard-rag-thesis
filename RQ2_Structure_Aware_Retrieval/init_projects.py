@@ -422,7 +422,7 @@ FAISS indices and BM25 pickles are written by the projects that call this librar
 ### What lives in the data bundle only (via `data/`)
 
 Large artefacts are not committed to git. They live in the companion Hugging Face
-dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) and download into a
+dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) and download into a
 local gitignored data root (env `RQ2_DATA_DIR`, default `<repo>/data`). This
 project's `data/` is wired to that root via `python scripts/setup/link_data.py`,
 resolving to:
@@ -442,7 +442,7 @@ resolving to:
 ### Step 1 — Download the data bundle and wire `data/`
 
 Large artefacts live in the companion Hugging Face dataset
-`mpaschalidis/bsard-rag-thesis-data` (subset `rq2`). Pull them into the data root
+`Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`). Pull them into the data root
 (env `RQ2_DATA_DIR`, default `<repo>/data`) and link this project's `data/` to it,
 run once from the component root:
 

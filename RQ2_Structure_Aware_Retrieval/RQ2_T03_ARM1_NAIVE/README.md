@@ -6,7 +6,7 @@ Arm 1: naive sliding-window chunking with hybrid retrieval (dense + sparse + RRF
 
 ## Setup
 
-> **Prerequisite:** the PDF cache (raw text, spans, chunks, FAISS/BM25 indices) and the BSARD corpus DB are not in git. Pull them from the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) into the shared RQ2 data root before step 1:
+> **Prerequisite:** the PDF cache (raw text, spans, chunks, FAISS/BM25 indices) and the BSARD corpus DB are not in git. Pull them from the companion Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) into the shared RQ2 data root before step 1:
 >
 > ```bash
 > python scripts/download_data.py        # downloads into $RQ2_DATA_DIR (default <repo>/data)

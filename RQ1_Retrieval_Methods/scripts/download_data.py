@@ -3,7 +3,7 @@
 RQ1's large artefacts (the SQLite corpus + FTS5 index, the deduplicated parquet
 export, cached dense embeddings, and the experiment result JSONs) are not stored
 in git. They live in the ``rq1/`` subset of the combined dataset
-``mpaschalidis/bsard-rag-thesis-data`` and are downloaded into the local data
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data`` and are downloaded into the local data
 root, with any byte-shards transparently reassembled.
 
 Data root resolution (see evaluation/paths.py):
@@ -25,7 +25,7 @@ import os
 import sys
 from pathlib import Path
 
-DEFAULT_HF_REPO = "mpaschalidis/bsard-rag-thesis-data"
+DEFAULT_HF_REPO = "Marios-Paschalidis-Thesis/bsard-rag-thesis-data"
 SUBSET = "rq1"
 
 

@@ -9,7 +9,7 @@ Designed for an offline GPU host so the slow dense-embedding step can happen
 elsewhere. The cached ``data/<doc_id>/configs/<config_hash>/`` folder is
 written under the data root (``$RQ2_DATA_DIR``, default ``<repo>/data``) and
 uploaded to the companion Hugging Face dataset
-``mpaschalidis/bsard-rag-thesis-data``; another machine obtains it by
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data``; another machine obtains it by
 downloading that dataset.
 
 Usage (from the repo root, with the venv active):
@@ -34,7 +34,7 @@ Usage (from the repo root, with the venv active):
 
 Once finished, the populated ``data/<doc_id>/configs/<hash>/`` lives under
 the data root and can be uploaded to the companion Hugging Face dataset
-``mpaschalidis/bsard-rag-thesis-data``. Re-running ``compare_t03_vs_t04.py``
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data``. Re-running ``compare_t03_vs_t04.py``
 against that cache root will hit the cache and skip the dense-embedding pass
 entirely.
 """
@@ -252,7 +252,7 @@ def main(argv: list[str] | None = None) -> int:
             "Build T04 FAISS + BM25 indices for one AzureDI doc — no queries. "
             "Designed for an offline GPU host; the resulting cache is written "
             "under the data root and shared via the companion Hugging Face "
-            "dataset mpaschalidis/bsard-rag-thesis-data."
+            "dataset Marios-Paschalidis-Thesis/bsard-rag-thesis-data."
         ),
     )
     parser.add_argument(

@@ -1,21 +1,31 @@
 """Upload the four components' local data into ONE combined Hugging Face dataset.
 
-Target layout on the Hub (repo: mpaschalidis/bsard-rag-thesis-data, dataset):
+Target layout on the Hub (repo: Marios-Paschalidis-Thesis/bsard-rag-thesis-data, dataset):
 
-    corpus/   ← bsard2currentlawmatching data root  (the SQLite corpus + exports)
-    rq1/      ← RQ1_Retrieval_Methods data root              (corpus DB, embeddings, results)
-    rq2/      ← RQ2_Structure_Aware_Retrieval data root           (per-arm data, results)
+    corpus/       ← bsard2currentlawmatching data root  (the SQLite corpus + exports)
+    rq1/          ← RQ1_Retrieval_Methods data root              (corpus DB, embeddings, results)
+    rq2/          ← RQ2_Structure_Aware_Retrieval data root (per-arm data, results)
+    rq2/AzureDI/  ← SANITISED AzureDI bundle (see "azuredi" subset below)
     # rq3 reuses the rq1 bundle — nothing separate to upload.
 
 Each subset is uploaded from a LOCAL data directory (the same place each
 component reads/writes its artefacts). Defaults are resolved from the per-
 component env vars, falling back to the in-repo default data root:
 
-    corpus : $CORPUS_DATA_DIR  | <repo>/bsard2currentlawmatching/output
-    rq1    : $BSARD_DATA_DIR    | <repo>/RQ1_Retrieval_Methods/output
-    rq2    : $RQ2_DATA_DIR      | <repo>/RQ2_Structure_Aware_Retrieval/data
+    corpus  : $CORPUS_DATA_DIR              | <repo>/bsard2currentlawmatching/output
+    rq1     : $BSARD_DATA_DIR                | <repo>/RQ1_Retrieval_Methods/output
+    rq2     : $RQ2_DATA_DIR                  | <repo>/RQ2_Structure_Aware_Retrieval/data
+    azuredi : $RQ2_AZUREDI_SANITISED_DIR     | <repo>/RQ2_Structure_Aware_Retrieval/
+              RQ2_T04_ARM2_METADATA/azuredi_sanitised
 
-Authentication: run `huggingface-cli login` once, or set HF_TOKEN to a token
+IMPORTANT — the rq2 subset ALWAYS excludes AzureDI/** (the raw AzureDI dump
+carries Azure blob URLs, storage-account names, MongoDB ObjectIds, and other
+fields that must never be published). The "azuredi" subset publishes the safe
+replacement instead, produced by
+``RQ2_Structure_Aware_Retrieval/scripts/sanitise_azuredi.py`` — run that
+script first, then upload (both are included by default with no --only flag).
+
+Authentication: run `hf auth login` once, or set HF_TOKEN to a token
 with write access to the target repo.
 
 Usage:
@@ -23,6 +33,8 @@ Usage:
     python data_tooling/upload_combined_hf.py --create --confirm   # create repo + upload all
     python data_tooling/upload_combined_hf.py --only corpus --confirm
     python data_tooling/upload_combined_hf.py --only rq2 --rq2-dir D:/data/rq2 --confirm
+    python RQ2_Structure_Aware_Retrieval/scripts/sanitise_azuredi.py
+    python data_tooling/upload_combined_hf.py --only azuredi --confirm
 
 The per-entry retry/timeout loop is hardened for flaky large-file (LFS) uploads
 on Windows. Re-running skips files the Hub already has.
@@ -65,7 +77,7 @@ def _patched_send(self, request, *, stream=False, timeout=None, verify=True, cer
 requests.adapters.HTTPAdapter.send = _patched_send
 
 MONO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO_ID = os.environ.get("BSARD_HF_COMBINED_REPO", "mpaschalidis/bsard-rag-thesis-data")
+DEFAULT_REPO_ID = os.environ.get("BSARD_HF_COMBINED_REPO", "Marios-Paschalidis-Thesis/bsard-rag-thesis-data")
 
 # Patterns ignored for every subset (sidecars + OS/editor junk).
 # ".cache/**" matters: HF forbids committing any path under a ".cache/" folder,
@@ -103,14 +115,28 @@ def _subset_config(args) -> dict[str, dict]:
         "rq2": {
             "local_dir": Path(args.rq2_dir or os.environ.get("RQ2_DATA_DIR")
                               or MONO_ROOT / "RQ2_Structure_Aware_Retrieval" / "data"),
-            # Exclude local-only dev/backup artefacts not part of the published
-            # bundle. (Other local-only stragglers can be excluded per-run with
+            # AzureDI/** is EXCLUDED HERE, ALWAYS. The raw AzureDI dump carries
+            # per-record 1536-dim embeddings, Azure blob URLs / storage-account
+            # names, MongoDB ObjectIds, and other leak-y fields that must never
+            # reach a published (eventually public) dataset. The sanitised
+            # subset (document_url/image_url/_id/embeddings/bounding_boxes
+            # stripped, MyDocuments.csv account/PII columns redacted) is
+            # published separately by the "azuredi" subset below, which is
+            # produced by ``scripts/sanitise_azuredi.py`` — run that first.
+            # (Other local-only stragglers can be excluded per-run with
             # --extra-ignore; do NOT broadly glob names like "retrieval_pool"
             # that also occur in published paths.)
-            "ignore": _COMMON_IGNORE + [
-                "logs/**", ".cache/**", "AzureDI/backups/**",
-                "AzureDI/DocumentDefinitions.csv", "AzureDI/VectorDBdev_Documents.json",
-            ],
+            "ignore": _COMMON_IGNORE + ["logs/**", ".cache/**", "AzureDI/**"],
+        },
+        "azuredi": {
+            # Output of RQ2_Structure_Aware_Retrieval/scripts/sanitise_azuredi.py.
+            # Publishes to rq2/AzureDI/ (not azuredi/) so the layout downstream
+            # code expects (AzureDI/ under the rq2 data root) is preserved.
+            "local_dir": Path(args.azuredi_dir or os.environ.get("RQ2_AZUREDI_SANITISED_DIR")
+                              or MONO_ROOT / "RQ2_Structure_Aware_Retrieval"
+                              / "RQ2_T04_ARM2_METADATA" / "azuredi_sanitised"),
+            "ignore": _COMMON_IGNORE,
+            "remote_prefix": "rq2/AzureDI",
         },
     }
 
@@ -194,8 +220,12 @@ def _sha256(path: Path, chunk: int = 1 << 20) -> str:
 
 
 def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
-                  ignore: list[str], confirm: bool, shard_over_bytes: int = 0) -> list[str]:
-    """Upload local_dir into <repo>:<subset>/, resumable.
+                  ignore: list[str], confirm: bool, shard_over_bytes: int = 0,
+                  remote_prefix: str | None = None) -> list[str]:
+    """Upload local_dir into <repo>:<remote_prefix>/, resumable.
+
+    ``remote_prefix`` defaults to ``subset`` but can differ (e.g. the
+    "azuredi" subset publishes under "rq2/AzureDI/" rather than "azuredi/").
 
     Files larger than ``shard_over_bytes`` (when >0) are split into
     ``<rel>.partNNN`` byte-shards of that size, recorded in ``sharded_files.json``,
@@ -203,6 +233,7 @@ def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
     object small — essential on connections that drop large transfers. Small files
     go up in one resumable upload_folder commit (ignores are relative to local_dir).
     """
+    remote_prefix = remote_prefix or subset
     if not local_dir.exists():
         print(f"[{subset}] SKIP - local dir not found: {local_dir}")
         return []
@@ -213,7 +244,7 @@ def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
     small = [p for p in kept if p not in set(large)]
     total = sum(p.stat().st_size for p in kept)
     print(f"[{subset}] {local_dir}")
-    print(f"[{subset}]   -> {repo}:{subset}/  ({len(kept)} files, {human_bytes(total)}; "
+    print(f"[{subset}]   -> {repo}:{remote_prefix}/  ({len(kept)} files, {human_bytes(total)}; "
           f"{len(large)} sharded > {shard_over_bytes // (1<<20)}MB)")
     if not confirm:
         return []
@@ -228,7 +259,7 @@ def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
     # One giant upload_folder commit never lands on a flaky link (it only commits
     # at the very end). Batching into <=BATCH_BYTES / BATCH_FILES commits means
     # each batch lands independently and a drop only retries the current batch.
-    small_targets = [(p, f"{subset}/{p.relative_to(local_dir).as_posix()}") for p in small]
+    small_targets = [(p, f"{remote_prefix}/{p.relative_to(local_dir).as_posix()}") for p in small]
     todo = [(p, r) for p, r in small_targets if r not in existing]
     BATCH_BYTES = 8 * (1 << 20)
     BATCH_FILES = 25
@@ -265,7 +296,7 @@ def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
         print(f"[{subset}] shard {rel} -> {nparts} parts ({human_bytes(size)})", flush=True)
         with open(p, "rb") as f:
             for i in range(nparts):
-                part_repo = f"{subset}/{rel}.part{i:03d}"
+                part_repo = f"{remote_prefix}/{rel}.part{i:03d}"
                 if part_repo in existing:   # already uploaded — don't re-read bytes
                     continue
                 f.seek(i * PART)
@@ -280,11 +311,11 @@ def upload_subset(api: HfApi, repo: str, subset: str, local_dir: Path,
     # ---- manifest (lists only the sharded files) ----
     if manifest:
         man = json.dumps(manifest, indent=2).encode()
-        if not _retry(f"{subset}/sharded_files.json", lambda: api.upload_file(
-                path_or_fileobj=man, path_in_repo=f"{subset}/sharded_files.json",
+        if not _retry(f"{remote_prefix}/sharded_files.json", lambda: api.upload_file(
+                path_or_fileobj=man, path_in_repo=f"{remote_prefix}/sharded_files.json",
                 repo_id=repo, repo_type="dataset",
-                commit_message=f"Add {subset}/sharded_files.json")):
-            failed.append(f"{subset}/sharded_files.json")
+                commit_message=f"Add {remote_prefix}/sharded_files.json")):
+            failed.append(f"{remote_prefix}/sharded_files.json")
 
     print(f"[{subset}] {'OK' if not failed else 'INCOMPLETE'}", flush=True)
     return failed
@@ -294,11 +325,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--repo", default=DEFAULT_REPO_ID,
                         help=f"Combined HF dataset repo id (default: {DEFAULT_REPO_ID})")
-    parser.add_argument("--only", choices=["corpus", "rq1", "rq2"], action="append",
+    parser.add_argument("--only", choices=["corpus", "rq1", "rq2", "azuredi"], action="append",
                         help="Upload only this subset (repeatable). Default: all.")
     parser.add_argument("--corpus-dir", help="Local data dir for the corpus subset")
     parser.add_argument("--rq1-dir", help="Local data dir for the rq1 subset")
     parser.add_argument("--rq2-dir", help="Local data dir for the rq2 subset")
+    parser.add_argument("--azuredi-dir",
+                        help="Local dir for the SANITISED AzureDI bundle (output of "
+                             "RQ2_Structure_Aware_Retrieval/scripts/sanitise_azuredi.py). "
+                             "Published to rq2/AzureDI/. Run that script first — never point "
+                             "this at the raw AzureDI dump.")
     parser.add_argument("--extra-ignore", nargs="*", default=[],
                         help="Extra ignore patterns / exact rel-paths appended to every "
                              "selected subset (e.g. local-only stragglers).")
@@ -313,7 +349,7 @@ def main() -> None:
     args = parser.parse_args()
 
     cfg = _subset_config(args)
-    subsets = args.only or ["corpus", "rq1", "rq2"]
+    subsets = args.only or ["corpus", "rq1", "rq2", "azuredi"]
 
     print(f"Combined repo : {args.repo} (dataset)")
     print(f"Subsets       : {', '.join(subsets)}")
@@ -330,7 +366,8 @@ def main() -> None:
         c = cfg[subset]
         ignore = c["ignore"] + list(args.extra_ignore)
         all_failed += upload_subset(api, args.repo, subset, c["local_dir"], ignore,
-                                    args.confirm, shard_over_bytes=shard_bytes)
+                                    args.confirm, shard_over_bytes=shard_bytes,
+                                    remote_prefix=c.get("remote_prefix"))
         print("-" * 60)
 
     if not args.confirm:

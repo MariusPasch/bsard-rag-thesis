@@ -3,7 +3,7 @@
 All large artefacts live in **one** companion Hugging Face dataset, organised
 into per-component subsets. No data is stored in git.
 
-- Default repo: `mpaschalidis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
+- Default repo: `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
 - Upload:   `python data_tooling/upload_combined_hf.py`
 - Download: `python data_tooling/download_combined_hf.py`
 
@@ -13,7 +13,7 @@ into per-component subsets. No data is stored in git.
 ## Layout on the Hub
 
 ```
-mpaschalidis/bsard-rag-thesis-data  (dataset)
+Marios-Paschalidis-Thesis/bsard-rag-thesis-data  (dataset)
 ├── corpus/   ← bsard2currentlawmatching: SQLite corpora + Parquet/JSONL exports,
 │              verification CSV, id-mappings, corpus stats
 ├── rq1/      ← RQ1_Retrieval_Methods: corpus DB, cached dense embeddings, BM25 stores,
@@ -63,8 +63,8 @@ The data was previously published as three separate datasets
    var. Set them to the combined repo (and use the combined download helper):
 
    ```bash
-   export BSARD_HF_REPO=mpaschalidis/bsard-rag-thesis-data   # corpus + rq1 + rq3
-   export RQ2_HF_REPO=mpaschalidis/bsard-rag-thesis-data     # rq2
+   export BSARD_HF_REPO=Marios-Paschalidis-Thesis/bsard-rag-thesis-data   # corpus + rq1 + rq3
+   export RQ2_HF_REPO=Marios-Paschalidis-Thesis/bsard-rag-thesis-data     # rq2
    python data_tooling/download_combined_hf.py               # pull all subsets to defaults
    ```
 
@@ -76,5 +76,5 @@ The data was previously published as three separate datasets
 
 ## Authentication
 
-`huggingface-cli login` once, or set `HF_TOKEN` to a write-scoped token for the
+`hf auth login` once, or set `HF_TOKEN` to a write-scoped token for the
 target repo. Never commit the token — use `.env.local` (gitignored).

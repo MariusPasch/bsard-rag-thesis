@@ -28,7 +28,7 @@ Registry: `RQ2_T00_ORCHESTRATOR/data/selected_pdfs.json`.
 **Storage convention:** each project's local `data/` is wired (via
 `scripts/setup/link_data.py`) to `<data root>/<PROJECT>/`, where the data root
 (env `RQ2_DATA_DIR`, default `<repo>/data`) is populated from the companion
-Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`). Git
+Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`). Git
 tracks source + docs; the data root holds indices/results/large artefacts. T03
 and T07 share the same `pdf_cache/` backing. T06's own `data/` wires to
 `<data root>/RQ2_T06_ARM_RESULTS/`.

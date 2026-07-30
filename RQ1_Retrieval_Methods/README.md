@@ -79,7 +79,7 @@ python scripts/evaluation/tier1/run_sparse_experiments.py
 
 Large artefacts (corpus DB, parquet, embeddings, result JSONs) are **not stored
 in git**. They live in the **`rq1/` subset** of the combined Hugging Face
-dataset [`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data)
+dataset [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data)
 and are fetched on demand. See [DATA_CARD.md](DATA_CARD.md) for the bundle
 contents and the mono-repo [DATA_CARD.md](../DATA_CARD.md) for the full layout.
 

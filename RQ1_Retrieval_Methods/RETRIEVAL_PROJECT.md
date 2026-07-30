@@ -27,7 +27,7 @@ A systematic comparison of retrieval methods over BSARD, producing the empirical
 
 ## 2. Corpus — What Is Available
 
-All corpus data is in **`bsard_corpus.db`** (SQLite, ~100 MB) and its flat exports. These large artefacts are not in git; they live in the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` and download into a local gitignored data root. The data root is the `BSARD_DATA_DIR` environment variable, defaulting to `<repo>/output`. Pull it with `python scripts/download_data.py` (or the mono-repo root `python data_tooling/download_combined_hf.py --subset rq1`). Paths below are written relative to the data root (shown as `output/...` for the default location).
+All corpus data is in **`bsard_corpus.db`** (SQLite, ~100 MB) and its flat exports. These large artefacts are not in git; they live in the companion Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` and download into a local gitignored data root. The data root is the `BSARD_DATA_DIR` environment variable, defaulting to `<repo>/output`. Pull it with `python scripts/download_data.py` (or the mono-repo root `python data_tooling/download_combined_hf.py --subset rq1`). Paths below are written relative to the data root (shown as `output/...` for the default location).
 
 ### 2.1 Primary files
 

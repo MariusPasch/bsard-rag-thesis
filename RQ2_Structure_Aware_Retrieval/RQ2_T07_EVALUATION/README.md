@@ -8,7 +8,7 @@ Evaluation harness: binary + weighted IR metrics, autonomous LLM judge, cost tra
 
 ### Step 1 — Download the data bundle and wire `data/` (shared with T03)
 
-Large artefacts are not committed to git. They live in the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) and download into the data root (env `RQ2_DATA_DIR`, default `<repo>/data`). T07's `data/` is wired to the **same** `pdf_cache/` root used by `RQ2_T03_ARM1_NAIVE/data/`, so both sub-projects address the same per-PDF folders: T07 reads T03's chunks/raw_text/manifest and writes its `eval/` and `question_projections/` siblings without copies. Run once from the component root:
+Large artefacts are not committed to git. They live in the companion Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) and download into the data root (env `RQ2_DATA_DIR`, default `<repo>/data`). T07's `data/` is wired to the **same** `pdf_cache/` root used by `RQ2_T03_ARM1_NAIVE/data/`, so both sub-projects address the same per-PDF folders: T07 reads T03's chunks/raw_text/manifest and writes its `eval/` and `question_projections/` siblings without copies. Run once from the component root:
 
 ```powershell
 python scripts/download_data.py

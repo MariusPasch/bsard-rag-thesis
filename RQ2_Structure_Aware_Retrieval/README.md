@@ -52,7 +52,7 @@ per-arm FAISS / BM25 / PageIndex indices and cached embeddings, and the result
 JSONs) are **not** in git. They live in the **`rq2/` subset** of the combined
 Hugging Face dataset and download into a single data root:
 
-- **Combined dataset:** [`mpaschalidis/bsard-rag-thesis-data`](https://huggingface.co/datasets/mpaschalidis/bsard-rag-thesis-data), subset `rq2/`
+- **Combined dataset:** [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data), subset `rq2/`
 - **Download (preferred):** from the mono-repo root,
   `python data_tooling/download_combined_hf.py --subset rq2`
 - **Data root:** `$RQ2_DATA_DIR`, or `<repo>/data` by default
@@ -93,7 +93,7 @@ links are portable: any machine works once the data root is downloaded.
 | Variable | Purpose | Default |
 |---|---|---|
 | `RQ2_DATA_DIR` | Data bundle root | `<repo>/data` |
-| `RQ2_HF_REPO` | Companion HF dataset id | `mpaschalidis/bsard-rag-thesis-data` |
+| `RQ2_HF_REPO` | Companion HF dataset id | `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` |
 | `RQ2_BSARD_DB` | BSARD corpus DB path | `<RQ2_DATA_DIR>/bsard_corpus.db` |
 
 See [`.env.example`](.env.example) for the full list, including the optional

@@ -10,7 +10,7 @@ Local Streamlit viewer for inspecting chunks, articles, and retrieval results on
 
 `data/` is a link into the shared data root (`$RQ2_DATA_DIR`, default
 `<repo>/data`), which is populated from the companion Hugging Face dataset
-`mpaschalidis/bsard-rag-thesis-data` (subset `rq2`). Run once from the
+`Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`). Run once from the
 component root:
 
 ```powershell

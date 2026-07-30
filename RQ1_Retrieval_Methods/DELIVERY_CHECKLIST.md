@@ -8,7 +8,7 @@ of the BSARD RAG thesis mono-repo. The release follows four principles:
 
 2. **Portable data.** Large data artefacts (corpus DB, parquet exports, embeddings,
    FAISS indices, result JSONs) are not in git. They live in the companion Hugging Face
-   dataset `mpaschalidis/bsard-rag-thesis-data` and download into a local gitignored data
+   dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` and download into a local gitignored data
    root. The RQ1 data root is the `BSARD_DATA_DIR` environment variable, defaulting to
    `<repo>/output`; `scripts/download_data.py` fetches the bundle into it. Source data is
    BSARD (CC BY-NC-SA 4.0).

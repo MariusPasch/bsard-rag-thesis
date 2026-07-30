@@ -1,6 +1,6 @@
 """Download one subset (or all) of the combined BSARD-RAG Hugging Face dataset.
 
-Combined dataset layout (repo: mpaschalidis/bsard-rag-thesis-data, dataset):
+Combined dataset layout (repo: Marios-Paschalidis-Thesis/bsard-rag-thesis-data, dataset):
 
     corpus/   rq1/   rq2/
 
@@ -31,7 +31,7 @@ from pathlib import Path
 from huggingface_hub import snapshot_download
 
 MONO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO_ID = os.environ.get("BSARD_HF_COMBINED_REPO", "mpaschalidis/bsard-rag-thesis-data")
+DEFAULT_REPO_ID = os.environ.get("BSARD_HF_COMBINED_REPO", "Marios-Paschalidis-Thesis/bsard-rag-thesis-data")
 
 # subset -> default local target (mirrors each component's data root).
 DEFAULT_TARGETS = {
@@ -51,28 +51,33 @@ def _sha256(path: Path, chunk: int = 1 << 20) -> str:
 
 def _reassemble_shards(local_dir: Path) -> None:
     """Rebuild any <name>.partNNN byte-shards into <name> per sharded_files.json,
-    then remove the parts and the manifest. No-op if no manifest is present."""
-    manifest = local_dir / "sharded_files.json"
-    if not manifest.exists():
-        return
-    spec = json.loads(manifest.read_text(encoding="utf-8"))
-    for rel, info in spec.items():
-        target = local_dir / rel
-        parts = [local_dir / f"{rel}.part{i:03d}" for i in range(info["parts"])]
-        if not all(p.exists() for p in parts):
-            print(f"  WARNING: missing parts for {rel} — left as-is")
-            continue
-        target.parent.mkdir(parents=True, exist_ok=True)
-        with open(target, "wb") as out:
+    then remove the parts and the manifest. No-op if no manifest is present.
+
+    A subset may publish its own nested manifest under a sub-prefix (e.g. the
+    "azuredi" upload subset writes rq2/AzureDI/sharded_files.json), so every
+    sharded_files.json anywhere under local_dir is processed, each relative to
+    its own containing directory.
+    """
+    for manifest in local_dir.rglob("sharded_files.json"):
+        base = manifest.parent
+        spec = json.loads(manifest.read_text(encoding="utf-8"))
+        for rel, info in spec.items():
+            target = base / rel
+            parts = [base / f"{rel}.part{i:03d}" for i in range(info["parts"])]
+            if not all(p.exists() for p in parts):
+                print(f"  WARNING: missing parts for {rel} — left as-is")
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with open(target, "wb") as out:
+                for p in parts:
+                    out.write(p.read_bytes())
+            if "sha256" in info and _sha256(target) != info["sha256"]:
+                print(f"  WARNING: checksum mismatch on {rel} — keeping parts")
+                continue
             for p in parts:
-                out.write(p.read_bytes())
-        if "sha256" in info and _sha256(target) != info["sha256"]:
-            print(f"  WARNING: checksum mismatch on {rel} — keeping parts")
-            continue
-        for p in parts:
-            p.unlink()
-        print(f"  reassembled {rel} ({info['size'] / 1e6:.1f} MB)")
-    manifest.unlink()
+                p.unlink()
+            print(f"  reassembled {rel} ({info['size'] / 1e6:.1f} MB)")
+        manifest.unlink()
 
 
 def download_subset(repo: str, subset: str, revision: str | None, local_dir: Path,

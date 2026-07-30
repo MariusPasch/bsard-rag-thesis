@@ -4,7 +4,7 @@ RQ2's sub-projects expect their large inputs under a local ``data/`` (and, for
 T04, ``azuredi/``) directory. These point into the data root populated by
 ``scripts/download_data.py`` (``$RQ2_DATA_DIR`` or ``<repo>/data``), which is
 itself filled from the companion Hugging Face dataset
-``mpaschalidis/bsard-rag-thesis-data`` (subset ``rq2``).
+``Marios-Paschalidis-Thesis/bsard-rag-thesis-data`` (subset ``rq2``).
 
 This script (re)creates those links. On Windows it makes directory junctions
 (no admin rights needed); on POSIX it makes symlinks. Pass ``--copy`` to copy

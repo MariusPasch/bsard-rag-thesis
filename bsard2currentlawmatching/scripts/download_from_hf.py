@@ -25,7 +25,7 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REPO_ID = "mpaschalidis/bsard-rag-thesis-data"
+DEFAULT_REPO_ID = "Marios-Paschalidis-Thesis/bsard-rag-thesis-data"
 SUBSET = "corpus"
 DEFAULT_LOCAL_DIR = PROJECT_ROOT / "output"
 

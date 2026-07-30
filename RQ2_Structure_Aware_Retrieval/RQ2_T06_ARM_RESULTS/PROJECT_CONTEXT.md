@@ -71,7 +71,7 @@ RQ2_T06_ARM_RESULTS/
 ## 5. STORAGE
 
 Large artefacts are not committed to git; they live in the companion Hugging Face
-dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) and download into the
+dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) and download into the
 data root (env `RQ2_DATA_DIR`, default `<repo>/data`). This project's `data/` is
 wired to that root via `scripts/setup/link_data.py`:
 ```

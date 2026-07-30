@@ -6,7 +6,7 @@ CLI entry point, config loading, and pipeline coordination across all sub-projec
 
 ## Setup
 
-> **Prerequisite:** the large data artefacts (caches, indices, the BSARD corpus DB, ground truth) are not in git. Pull them from the companion Hugging Face dataset `mpaschalidis/bsard-rag-thesis-data` (subset `rq2`) into the shared RQ2 data root before step 1:
+> **Prerequisite:** the large data artefacts (caches, indices, the BSARD corpus DB, ground truth) are not in git. Pull them from the companion Hugging Face dataset `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (subset `rq2`) into the shared RQ2 data root before step 1:
 >
 > ```bash
 > python scripts/download_data.py        # downloads into $RQ2_DATA_DIR (default <repo>/data)
