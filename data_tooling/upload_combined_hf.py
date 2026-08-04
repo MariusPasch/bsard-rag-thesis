@@ -19,9 +19,8 @@ component env vars, falling back to the in-repo default data root:
               RQ2_T04_ARM2_METADATA/azuredi_sanitised
 
 IMPORTANT — the rq2 subset ALWAYS excludes AzureDI/** (the raw AzureDI dump
-carries Azure blob URLs, storage-account names, MongoDB ObjectIds, and other
-fields that must never be published). The "azuredi" subset publishes the safe
-replacement instead, produced by
+carries internal identifiers, links, and layout fields that must never be
+published). The "azuredi" subset publishes the safe replacement instead, produced by
 ``RQ2_Structure_Aware_Retrieval/scripts/sanitise_azuredi.py`` — run that
 script first, then upload (both are included by default with no --only flag).
 
@@ -116,13 +115,11 @@ def _subset_config(args) -> dict[str, dict]:
             "local_dir": Path(args.rq2_dir or os.environ.get("RQ2_DATA_DIR")
                               or MONO_ROOT / "RQ2_Structure_Aware_Retrieval" / "data"),
             # AzureDI/** is EXCLUDED HERE, ALWAYS. The raw AzureDI dump carries
-            # per-record 1536-dim embeddings, Azure blob URLs / storage-account
-            # names, MongoDB ObjectIds, and other leak-y fields that must never
-            # reach a published (eventually public) dataset. The sanitised
-            # subset (document_url/image_url/_id/embeddings/bounding_boxes
-            # stripped, MyDocuments.csv account/PII columns redacted) is
-            # published separately by the "azuredi" subset below, which is
-            # produced by ``scripts/sanitise_azuredi.py`` — run that first.
+            # per-record 1536-dim embeddings and several internal identifiers,
+            # links, and layout fields that must never reach a published
+            # (eventually public) dataset. The sanitised subset is published
+            # separately by the "azuredi" subset below, which is produced by
+            # ``scripts/sanitise_azuredi.py`` — run that first.
             # (Other local-only stragglers can be excluded per-run with
             # --extra-ignore; do NOT broadly glob names like "retrieval_pool"
             # that also occur in published paths.)

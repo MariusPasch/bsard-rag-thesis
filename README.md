@@ -36,6 +36,11 @@ gitignored data roots.
 - Dataset: `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
 - Layout: `corpus/`, `rq1/`, `rq2/` (RQ3 reuses the `rq1/` subset)
 - Install the tooling deps once: `pip install -r requirements.txt`
+- The dataset is **private** — downloading it requires authenticating as an
+  account with read access, not just uploading. Run `hf auth login` once. If
+  that errors out (seen in some environments), create a **READ**-scoped
+  access token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+  and set it as `HF_TOKEN` instead (`.env.local`, gitignored — never commit it).
 - Pull everything: `python data_tooling/download_combined_hf.py`
 - Full contents, sizes, and the upload/migration procedure: [DATA_CARD.md](DATA_CARD.md)
 

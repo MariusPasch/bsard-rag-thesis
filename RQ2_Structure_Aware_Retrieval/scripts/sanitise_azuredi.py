@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""Produce the minimal, leak-free AzureDI bundle shipped in the public release.
+"""Produce the minimal, publication-safe AzureDI bundle shipped in the public release.
 
 The raw AzureDI dump (``VectorDB_Documents.json``, ~316 MB) is **not** safe to
-publish: it carries per-record 1536-dim embeddings (97% of its size and never
-read by the code), Azure blob URLs / storage-account names, a MongoDB ObjectId,
-DI bounding-box polygons, 2-D projections, and records for documents outside the
-curated 5-PDF set. This script derives a sanitised copy that reproduces Arm 2A /
-Arm 2C identically while exposing only what the loader actually consumes.
+publish as-is: most of its size is per-record embeddings never read by the
+code, and it carries several internal identifiers, links, and layout fields
+that play no role in reproducing the retrieval results. This script derives
+a minimised copy that reproduces Arm 2A / Arm 2C identically while exposing
+only what the loader actually consumes.
 
 It is deterministic and never mutates the source.
 
@@ -15,7 +15,7 @@ What it does
 * ``VectorDB_Documents.json`` -> sanitised ``VectorDB_Documents.json``:
     - keep only records whose ``payload.metadata.document_id`` is in the kept set
       (kept = MyDocuments.csv ids minus doc_id 1, mirroring ``azuredi_loader.py``)
-    - drop fields the code never reads OR that leak:
+    - drop fields the code never reads or that are not safe to publish:
         ``_id``, ``vector_full_embeddings``,
         ``payload.metadata.{document_url, image_url, 2D_embeddings,
         2D_embeddings_content_summary, bounding_boxes}``
@@ -29,7 +29,7 @@ What it does
   the filter, so they contribute nothing at runtime)
 * ``DocumentDefinitions.csv``    -> DROPPED (only doc_id 2, which is filtered out
   at runtime; ``load_azuredi_corpus`` handles its absence gracefully)
-* ``MyDocuments.csv``            -> redacted copy (account/PII columns blanked)
+* ``MyDocuments.csv``            -> redacted copy (internal identifier columns blanked)
 * ``backups/``                   -> never copied
 
 The result loads through ``arm2_metadata.azuredi_loader.load_azuredi_corpus``
@@ -59,7 +59,7 @@ META_KEEP = [
     "has_requirements", "path_to_item", "content_summary", "keywords",
     "level_summary",
 ]
-# MyDocuments.csv columns to blank (leak account/infra/PII; unused downstream).
+# MyDocuments.csv columns to blank (internal identifiers; unused downstream).
 MYDOCS_REDACT = {
     "UserId", "DocumentPdfUrl", "CollectionName", "Hash",
     "UploadCost", "UploadTimeMap", "VectorDbIDs",

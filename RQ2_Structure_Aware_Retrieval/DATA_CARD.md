@@ -37,7 +37,7 @@ root below):
 | `bsard_corpus.db` | ~0.10 GB | SQLite BSARD corpus + index; ground-truth source for every arm. |
 | `shared_source/` | ~0.06 GB | The curated source PDFs of Belgian statutory codes + question/metadata CSVs (T02 loader inputs). |
 | `pdf_cache/` | ~0.77 GB | Arm 1 (naive) per-PDF caches: extracted text, article spans, chunks, FAISS + BM25 indices, cached embeddings. Shared by T03 and T07. |
-| `AzureDI/` | ~9 MB | Azure Document Intelligence layout export for the 5 selected docs (`VectorDB_Documents.json` + `MyDocuments.csv`). **Minimised for release** by `scripts/sanitise_azuredi.py`: stored embeddings, bounding boxes, blob URLs and account/PII fields are stripped, and non-selected documents removed. Reproduces Arm 2A / 2C identically (the loader re-embeds `page_content` at runtime). |
+| `AzureDI/` | ~9 MB | Azure Document Intelligence layout export for the 5 selected docs (`VectorDB_Documents.json` + `MyDocuments.csv`). **Minimised for release** by `scripts/sanitise_azuredi.py`: fields not needed to reproduce the retrieval results are stripped, and non-selected documents removed. Reproduces Arm 2A / 2C identically (the loader re-embeds `page_content` at runtime). |
 | `RQ2_T04_ARM2_METADATA/` | ~0.82 GB | Arm 2A metadata-aware retrieval indices + cached embeddings. |
 | `RQ2_T05_ARM2_PAGEINDEX/` | ~0.43 GB | Arm 2B PageIndex LLM-built navigation trees + per-query results. |
 | **Total** | **~1.9 GB** | Full mirror (AzureDI minimised; 11 oversized regenerable pools excluded — see below). |
