@@ -2,6 +2,8 @@
 
 **Author:** Marios Paschalidis · KU Leuven · Master's thesis
 
+**Thesis report:** [`report/Thesis_Report_Paschalidis.pdf`](report/Thesis_Report_Paschalidis.pdf) · **Data:** [Hugging Face dataset](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data)
+
 A mono-repo bundling the full pipeline behind the thesis: building a Belgian
 statutory corpus from primary legal sources, then evaluating retrieval and
 retrieval-augmented-generation (RAG) methods over it. All work is grounded in
@@ -33,14 +35,14 @@ No large data lives in git. All artefacts live in **one** companion Hugging Face
 dataset, organised into per-component subsets, and download into local,
 gitignored data roots.
 
-- Dataset: `Marios-Paschalidis-Thesis/bsard-rag-thesis-data` (override with `BSARD_HF_COMBINED_REPO`)
+- Dataset: [`Marios-Paschalidis-Thesis/bsard-rag-thesis-data`](https://huggingface.co/datasets/Marios-Paschalidis-Thesis/bsard-rag-thesis-data) (override with `BSARD_HF_COMBINED_REPO`)
 - Layout: `corpus/`, `rq1/`, `rq2/` (RQ3 reuses the `rq1/` subset)
 - Install the tooling deps once: `pip install -r requirements.txt`
-- The dataset is **private** — downloading it requires authenticating as an
-  account with read access, not just uploading. Run `hf auth login` once. If
-  that errors out (seen in some environments), create a **READ**-scoped
-  access token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
-  and set it as `HF_TOKEN` instead (`.env.local`, gitignored — never commit it).
+- The dataset is **public** — no authentication needed to download. If you hit
+  rate limits or want faster/authenticated access, run `hf auth login` once,
+  or create a **READ**-scoped access token at
+  [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) and
+  set it as `HF_TOKEN` instead (`.env.local`, gitignored — never commit it).
 - Pull everything: `python data_tooling/download_combined_hf.py`
 - Full contents, sizes, and the upload/migration procedure: [DATA_CARD.md](DATA_CARD.md)
 
@@ -80,6 +82,8 @@ bsard-rag-thesis/
 ├── data_tooling/               ← combined Hugging Face up/download tooling
 │   ├── upload_combined_hf.py
 │   └── download_combined_hf.py
+├── report/
+│   └── Thesis_Report_Paschalidis.pdf ← full thesis report (PDF)
 ├── README.md                   ← this file
 ├── requirements.txt            ← deps for data_tooling/ (huggingface_hub, requests)
 ├── DATA_CARD.md                ← combined dataset layout + re-upload procedure
